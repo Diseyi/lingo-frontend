@@ -1,6 +1,6 @@
-# Lingo-backend
+# Lingo-frontend
 
-The backend code base for lingo. 
+The frontend code base for lingo. 
 
 ## What is Lingo?
 
