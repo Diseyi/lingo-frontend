@@ -19,7 +19,7 @@ const index = () => {
               <Link href="/"> FAQ </Link>
             </div>
           </div>
-          <div className="flex flex-row items-center gap-9 hidden lg:block ">
+          <div className=" flex-row items-center gap-9 hidden lg:flex ">
             <div className="text-lg px-8">
               <Link href="/"> Already have an account? </Link>
             </div>
