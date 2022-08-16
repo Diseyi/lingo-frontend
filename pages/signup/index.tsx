@@ -6,7 +6,7 @@ import Logo from "../../assets/icon/logo.svg";
 const index = () => {
   return (
     <div>
-      <header className="">
+      <header className="hidden md:block">
         <nav className="flex flex-row items-center justify-between w-[90%] m-auto py-4 ">
           <div className="flex flex-row items-center gap-9">
             <div className="">
@@ -19,16 +19,14 @@ const index = () => {
               <Link href="/"> FAQ </Link>
             </div>
           </div>
-          <div className="flex flex-row items-center gap-9">
+          <div className="flex flex-row items-center gap-9 hidden lg:block ">
             <div className="text-lg px-8">
               <Link href="/"> Already have an account? </Link>
             </div>
             <div className="text-base px-8 py-2 rounded bg-[#AAE8DF] ">
               <Link href="/login">Login </Link>
             </div>
-            <div className="flex text-base px-8">
-              EN
-            </div>
+            <div className="flex text-base px-8">EN</div>
           </div>
         </nav>
       </header>

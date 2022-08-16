@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const SignupForm = () => {
   return (
-    <div className=" md:w-[500px] m-auto   ">
+    <div className="w-[90%] md:w-[500px] m-auto   ">
       <h2 className="font-medium text-4xl text-center my-4 mb-14 py-2 ">
         Sign Up
       </h2>

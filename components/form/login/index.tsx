@@ -4,7 +4,7 @@ import React from 'react'
 
 const Login = () => {
   return (
-    <div className=" md:w-[500px] m-auto   ">
+    <div className=" w-[90%] md:w-[500px] m-auto   ">
       <h2 className="font-medium text-4xl text-center my-4 mb-14 py-2 ">
         Login into your account
       </h2>
