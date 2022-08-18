@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background: #F2F3F4;
+}
+
+.ant-input-lg {
+  background: #E9EBEC !important;
+
+}
+
