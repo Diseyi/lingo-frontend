@@ -4,4 +4,20 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = nextConfig
+module.exports = {
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/",
+  //       destination: "/lingo",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
+  nextConfig,
+  env: {
+    LINGO_IP:
+      // eslint-disable-next-line no-undef
+      process.env.LINGO_BACKEND_IP || "https://backend-lingo.herokuapp.com",
+  },
+};

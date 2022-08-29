@@ -1,15 +1,81 @@
-@import 'antd/dist/antd.css';
+@import "antd/dist/antd.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    background: #F2F3F4;
+  /* background: #d4d4d4; */
+  background: #f2f3f5;
+  height: 100%;
+  overflow: hidden;
 }
 
-.ant-input-lg {
-  background: #E9EBEC !important;
-
+.ant-input-lg,
+.ant-select-lg .ant-select-selection--single {
+  background: #e9ebec !important;
+  height: 50px !important;
+  border: 1px solid red;
 }
 
+.ant-select-selector
+  .ant-select-selection
+  .ant-select-selection-search
+  .ant-select-selection-item::after {
+  background-color: #e9ebec !important;
+  height: 50px;
+}
+
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  border-color: #e9ebec;
+  border: none;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  border-right-width: 1px;
+  outline: 0;
+  height: 50px;
+  background-color: #e9ebec !important;
+}
+
+.ant-select-single.ant-select-lg:not(.ant-select-customize-input)
+  .ant-select-selector::after,
+.ant-select-single.ant-select-lg:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-item,
+.ant-select-single.ant-select-lg:not(.ant-select-customize-input)
+  .ant-select-selector
+  .ant-select-selection-placeholder {
+  height: 50px;
+  background-color: #e9ebec !important;
+  border-color: #e9ebec;
+  border: none;
+}
+
+.ant-select-single.ant-select-lg:not(.ant-select-customize-input)
+  .ant-select-selector {
+  padding: 0 11px;
+  height: 50px;
+  background-color: #e9ebec !important;
+  border: none;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+background-color: #52B1A4;
+border-color: #52B1A4;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #aae8df;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2f3646;
+  border-radius: 10px;
+}

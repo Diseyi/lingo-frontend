@@ -1,23 +1,29 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import Login from "../../components/form/login";
 import Logo from "../../assets/icon/logo.svg";
 import Image from "next/image";
+import { AuthContext } from "../../store/auth";
 
 const index = () => {
+
+
   return (
-    <div>
-      <header className="hidden md:block">
+    <div className="bg-[#f2f3f5] h-screen ">
+      <header className="hidden  md:block">
         <nav className="flex flex-row items-center justify-between w-[90%] m-auto py-4 ">
           <div className="flex flex-row items-center gap-9">
             <div className="">
-              <Image src={Logo.src} alt="" className="" />
+              <Image
+                src={Logo.src}
+                width="230px"
+                height="68px"
+                alt=""
+                className=""
+              />
             </div>
             <div className="text-lg">
               <Link href="/"> How it works </Link>
-            </div>
-            <div className="text-lg">
-              <Link href="/"> FAQ </Link>
             </div>
           </div>
           <div className=" flex-row items-center hidden lg:flex ">

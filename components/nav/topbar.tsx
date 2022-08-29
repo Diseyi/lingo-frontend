@@ -9,7 +9,13 @@ const topbar = () => {
       <nav className="flex flex-row items-center justify-between w-[90%] m-auto py-6 ">
         <div className="flex flex-row items-center gap-9">
           <div className="">
-            <Image src={Logo.src} alt="" className="" />
+            <Image
+              src={Logo.src}
+              width="230px"
+              height="68px"
+              alt=""
+              className=""
+            />
           </div>
           <div className="text-lg">
             <Link href="/"> How it works </Link>
@@ -27,7 +33,6 @@ const topbar = () => {
           </div>
           <div className="flex text-base">
             <Link href="/"> EN</Link>
-
           </div>
         </div>
       </nav>
