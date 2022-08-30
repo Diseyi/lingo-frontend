@@ -5,9 +5,8 @@ import Logo from "../../assets/icon/logo.svg";
 import Image from "next/image";
 import { AuthContext } from "../../store/auth";
 
+
 const index = () => {
-
-
   return (
     <div className="bg-[#f2f3f5] h-screen ">
       <header className="hidden  md:block">
@@ -27,13 +26,10 @@ const index = () => {
             </div>
           </div>
           <div className=" flex-row items-center hidden lg:flex ">
-            <div className="text-lg px-8">
-              <Link href="/"> Dont have an account? </Link>
-            </div>
+            <div className="text-lg px-8">Dont have an account?</div>
             <div className="text-base bg-[#AAE8DF] px-8 py-2 rounded ">
               <Link href="/signup">Sign Up </Link>
             </div>
-            <div className="flex text-base px-8">EN</div>
           </div>
         </nav>
       </header>

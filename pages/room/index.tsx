@@ -35,8 +35,8 @@ const Room = () => {
       <title>Room</title>
       <Layout
         notification={<Notification />}
-        search={isSearch ? <Search /> : <></>}
-        icon={<Add />}
+        search={<Search /> }
+        // icon={<Add />}
         content={
           filterChats ? (
             <RoomList data={data} />

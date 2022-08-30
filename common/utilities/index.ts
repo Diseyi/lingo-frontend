@@ -4,14 +4,14 @@ export const Request = async (requestMethod: any) => {
 
         return {
             data: getRequest.data,
-            status: getRequest.status,
-            statusText: getRequest.statusText
+           status: getRequest.status,
+           statusText: getRequest.statusText
         }
-    }
-    catch(error: any) {
+    } 
+    catch (error: any) {
         return {
             data: null,
-            error: "an error occured",
+            error: "An error occured"
         }
     }
 }

@@ -64,6 +64,11 @@ background-color: #52B1A4;
 border-color: #52B1A4;
 }
 
+.ant-input-affix-wrapper-lg {
+padding: 0 11px;
+
+}
+
 
 
 ::-webkit-scrollbar {

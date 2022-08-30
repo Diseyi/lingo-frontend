@@ -1,12 +1,13 @@
-import { APIBASE, axiosInstance, getAuthHeaders } from ".";
+import { APIBASE, axiosInstance } from ".";
 import { Request } from "../utilities";
+
 
 
 const http = axiosInstance(APIBASE.Lingo + "/api/users")
 
 export class ChatApi {
 
-    static async saveLanguage(payload: any) {
-        return await Request(() => http.patch(`/lang`, payload))
+    static async getUsers() {
+        return await Request(() => http.get('/'))
     }
 }

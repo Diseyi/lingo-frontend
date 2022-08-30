@@ -18,7 +18,7 @@ const RoomsList = ({ data }: Props) => {
 
 
   return (
-    <div className=" px-6 h-[600px] overflow-y-scroll ">
+    <div className=" px-6 h-[600px]  overflow-y-scroll ">
       {data.map((item: any) => {
         return (
           <div

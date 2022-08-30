@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { message, Select } from "antd";
 import { Checkbox } from "antd";
@@ -26,17 +26,23 @@ const index = () => {
 
   const router = useRouter();
 
-  const sendRequest = async (e: any) => {
+  const sendRequest = (e: any) => {
     e.preventDefault();
     setIsLoading(true);
 
     const checkPayload = isValidPayload(lang, room);
 
-    const payload = {
-      lang: "English",
-      room: ["Spanish", "French"],
-    };
-    setIsLoading(false);
+    if (!checkPayload) {
+      setIsLoading(false);
+      message.warn("choose a language and atleast one room");
+    } else {
+      const payload = {
+        lang,
+        room,
+      };
+      setIsLoading(false);
+      console.log(payload, checkPayload);
+    }
 
     router.push("/chats");
   };

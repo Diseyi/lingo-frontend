@@ -1,74 +1,64 @@
-import React, { useContext, useState } from "react";
-import { Input } from "antd";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { AuthContext } from "../../../store/auth";
-import { Authentication } from "../../../common/api/auth.api";
+import { Input, message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
+import { Authentication } from "../../../common/api/auth.api";
+import { AuthContext } from "../../../store/auth";
 
 const Login = () => {
-  const router = useRouter();
-
-  const [firstname, setFirstName] = useState("");
-  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { setUsername, setToken } = useContext(AuthContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = (e: any) => {
+  const router = useRouter();
+  const {token, setToken} = useContext(AuthContext) as any
+
+  const sendRequest = async (e: any) => {
     e.preventDefault();
-
-    // const userInSession = sessionStorage.getItem("auth") || "";
-    // const parsed = userInSession ? JSON.parse(userInSession) : "";
-    // console.log(parsed);
-
-    sendRequest();
-  };
-
-  const sendRequest = async () => {
     setIsLoading(true);
 
-    const payload = {
-      username: firstname,
-      password,
-    };
-
-    const isValid = validateValue(firstname, password);
-
-    if (isValid) {
+    const checkPayload = isValidPayload(username, password);
+    if (checkPayload) {
+      message.warn("Username or password shouldn't be empty");
       setIsLoading(false);
-      return alert("Please enter a valid email and password");
     } else {
+      const payload = {
+        username,
+        password,
+      };
+
       const { data, error } = await Authentication.login(payload);
-      setIsLoading(false);
+
       if (error) {
-        error;
+        message.warn(error);
       }
-      console.log(data);
-      setToken(data.token);
-      setUsername(data.username);
-      sessionStorage.setItem("auth", JSON.stringify(data));
-      setPassword("");
-      setFirstName("");
+
+      setIsLoading(false);
+
+      setToken(data.token)
+
+      console.log(token);
+
+      router.push("/language");
     }
   };
 
-  const validateValue = (firstname: string, password: string) => {
-    return firstname === undefined || password === undefined;
+  const getUsername = (e: any) => {
+    setUsername(e.target.value);
   };
 
   const getPassword = (e: any) => {
     setPassword(e.target.value);
-    console.log(e.target.value);
   };
 
-  const getFirstname = (e: any) => {
-    setFirstName(e.target.value);
-    console.log(e.target.value);
+  const isValidPayload = (username: string, password: string) => {
+    return username === "" && password === "";
   };
 
   return (
     <div className=" w-[90%] md:w-[500px] m-auto   ">
-      <h2 className="font-medium text-4xl text-center my-4 mb-14 py-2 ">
+      <h2 className="font-medium text-xl lg:text-4xl text-center my-4 mb-14 py-2 ">
         Login into your account
       </h2>
       <form action="" className="mt-6  p-2 ">
@@ -79,8 +69,8 @@ const Login = () => {
           <Input
             placeholder="Username"
             size="large"
-            value={firstname}
-            onChange={getFirstname}
+            value={username}
+            onChange={getUsername}
             style={{ background: "#E9EBEC", height: "50px", border: "none" }}
           />
         </div>
@@ -96,22 +86,27 @@ const Login = () => {
             style={{ background: "#E9EBEC", height: "50px", border: "none" }}
           />
         </div>
+        {/* <div className=""{...token}></div> */}
 
         <button
-          className="h-[50px] flex items-center justify-center gap-2 rounded-lg bg-[#AAE8DF] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
-          onClick={handleLogin}
+          className={
+            isLoading
+              ? "h-[50px] flex items-center justify-center gap-2 rounded bg-[#52B1A4] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
+              : "h-[50px] flex items-center justify-center gap-2 rounded bg-[#AAE8DF] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
+          }
+          onClick={sendRequest}
         >
           Login
           {isLoading && <Spinner />}
         </button>
         <div className="py-4 text-center">Or</div>
-        <button className="w-full h-[50px] rounded-lg bg-[#525765] text-[#D5D7DA] py-2 mb-4 font-bold ">
+        <button className="w-full h-[50px] rounded bg-[#525765] text-[#D5D7DA] py-2 mb-4 font-bold ">
           Continue with Google
         </button>
       </form>
       <div className="text-[#1F2D2B] text-center">
         Dont have an account? {""}
-        <span className="text-[#99E3D9] ">
+        <span className="text-[#52B1A4] ">
           <Link href="/signup"> Sign Up</Link>
         </span>
       </div>
