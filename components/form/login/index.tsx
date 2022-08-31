@@ -5,14 +5,16 @@ import Link from "next/link";
 import Spinner from "../../spinner";
 import { Authentication } from "../../../common/api/auth.api";
 import { AuthContext } from "../../../store/auth";
+import useAxios from "../../../common/hooks/useAxios";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const Auth = useAxios() as any;
+
   const router = useRouter();
-  const {token, setToken} = useContext(AuthContext) as any
 
   const sendRequest = async (e: any) => {
     e.preventDefault();
@@ -27,20 +29,25 @@ const Login = () => {
         username,
         password,
       };
+      setIsLoading(false);
 
-      const { data, error } = await Authentication.login(payload);
+      const { error, data } = await Auth.authenticate(
+        "/api/users/login",
+        "post",
+        payload
+      );
 
       if (error) {
         message.warn(error);
       }
 
+      sessionStorage.setItem("auth", JSON.stringify(data));
+
       setIsLoading(false);
 
-      setToken(data.token)
+      // router.push('/language')
 
-      console.log(token);
-
-      router.push("/language");
+      console.log(data);
     }
   };
 

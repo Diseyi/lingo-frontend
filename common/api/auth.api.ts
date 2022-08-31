@@ -1,11 +1,12 @@
 import { APIBASE, axiosInstance } from ".";
 import { Request } from "../utilities";
+import useAxios from "../hooks/useAxios";
 
 
-const http = axiosInstance(APIBASE.Lingo + "/api/users")
+const http = useAxios()
 
 export class Authentication {
-    static login = (payload: any) => Request(() => http.post('/login', payload))
+    static login = () => 
 
     static signup = (payload: any) => Request(() => http.post('/signup', payload))
 }

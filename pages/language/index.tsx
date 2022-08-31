@@ -3,14 +3,15 @@ import { useRouter } from "next/router";
 import { message, Select } from "antd";
 import { Checkbox } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
-import { ChatApi } from "../../common/api/chat.api";
 import Spinner from "../../components/spinner";
 import Image from "next/image";
 import Logo2 from "../../assets/icon/logo2.svg";
+import useSessionStorage from "../../common/hooks/useSessionStorage";
+import useAxios from "../../common/hooks/useAxios";
 
 const { Option } = Select;
 
-const index = () => {
+const Language = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [lang, setLang] = useState("");
 
@@ -24,6 +25,10 @@ const index = () => {
     "German",
   ];
 
+  const Token = useSessionStorage();
+const token = Token
+  const Auth = useAxios() as any;
+
   const router = useRouter();
 
   const sendRequest = async (e: any) => {
@@ -36,9 +41,17 @@ const index = () => {
       lang: "English",
       room: ["Spanish", "French"],
     };
-    setIsLoading(false);
 
-    router.push("/chats");
+     const { error, data } = await Auth.fetchData(
+       "/api/users/lang",
+       "patch",
+       payload,
+       token
+     );
+    setIsLoading(false);
+    console.log( data)
+
+    // router.push("/chats");
   };
 
   const getCheckedLang = (e: any) => {
@@ -49,7 +62,7 @@ const index = () => {
 
   const getLanguage = (value: string) => {
     setLang(value);
-    console.log(value);
+    console.log(Auth);
   };
 
   const isValidPayload = (lang: string, room: []) => {
@@ -137,4 +150,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Language;
