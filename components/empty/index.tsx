@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import image from "../../assets/images/image.png"
+import image from "../../assets/icon/image.svg"
 
 
 const Empty = () => {

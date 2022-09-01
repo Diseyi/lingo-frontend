@@ -74,7 +74,7 @@ const SignupForm = () => {
           <Input
             placeholder="Username"
             size="large"
-            value={username} 
+            value={username}
             onChange={getUsername}
             style={{ background: "#E9EBEC", height: "50px", border: "none" }}
           />
@@ -106,8 +106,8 @@ const SignupForm = () => {
         <button
           className={
             isLoading
-              ? "h-[50px] flex items-center justify-center gap-2 rounded bg-[#52B1A4] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
-              : "h-[50px] flex items-center justify-center gap-2 rounded bg-[#AAE8DF] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
+              ? "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
+              : "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
           }
           onClick={sendRequest}
         >
@@ -121,9 +121,11 @@ const SignupForm = () => {
       </form>
       <div className="text-[#1F2D2B] text-center">
         Already have an account? {""}
-        <span className="text-[#52B1A4] ">
-          <Link href="/login"> Login</Link>
-        </span>
+          <Link href="/login">
+            <span className="text-[#52B1A4] cursor-pointer hover:text-gray-600">
+              Login
+            </span>
+          </Link>
       </div>
     </div>
   );

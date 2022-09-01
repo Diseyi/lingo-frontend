@@ -5,7 +5,6 @@ import Logo from "../../assets/icon/logo.svg";
 import Image from "next/image";
 import { AuthContext } from "../../store/auth";
 
-
 const index = () => {
   return (
     <div className="bg-[#f2f3f5] h-screen ">
@@ -21,15 +20,19 @@ const index = () => {
                 className=""
               />
             </div>
-            <div className="text-lg">
-              <Link href="/"> How it works </Link>
-            </div>
+            <Link href="/">
+              <div className="text-[#171B23] px-8 py-2 rounded hover:border hover:bg-gray-200 text-base cursor-pointer">
+                Home
+              </div>
+            </Link>
           </div>
           <div className=" flex-row items-center hidden lg:flex ">
             <div className="text-lg px-8">Dont have an account?</div>
-            <div className="text-base bg-[#AAE8DF] px-8 py-2 rounded ">
-              <Link href="/signup">Sign Up </Link>
-            </div>
+            <Link href="/signup">
+              <div className="text-white hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
+                Sign up
+              </div>
+            </Link>
           </div>
         </nav>
       </header>

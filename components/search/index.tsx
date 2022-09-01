@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Search = () => {
+const Search = ({searchvalue}: any) => {
   return (
     <div className="pt-4 px-6">
       <div className="relative  w-full">
@@ -24,6 +24,7 @@ const Search = () => {
           id="simple-search"
           className="bg-[#E9EBEC] text-gray-900 text-sm rounded-lg w-full pl-10 p-2.5 "
           placeholder="Search"
+          value={searchvalue}
           required
         />
       </div>

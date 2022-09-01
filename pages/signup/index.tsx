@@ -19,15 +19,19 @@ const index = () => {
                 className=""
               />
             </div>
-            <div className="text-lg">
-              <Link href="/"> How it works </Link>
-            </div>
+            <Link href="/">
+              <div className="text-[#171B23] px-8 py-2 rounded hover:border hover:bg-gray-200 text-base cursor-pointer">
+                Home
+              </div>
+            </Link>
           </div>
           <div className=" flex-row items-center gap-9 hidden lg:flex ">
             <div className="text-lg px-8">Already have an account?</div>
-            <div className="text-base px-8 py-2 rounded bg-[#AAE8DF] ">
-              <Link href="/login">Login </Link>
-            </div>
+            <Link href="/login">
+              <div className="text-white hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
+                Login
+              </div>
+            </Link>
           </div>
         </nav>
       </header>

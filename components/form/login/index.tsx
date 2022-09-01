@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { Input, message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
-import { Authentication } from "../../../common/api/auth.api";
-import { AuthContext } from "../../../store/auth";
 import useAxios from "../../../common/hooks/useAxios";
 
 const Login = () => {
@@ -29,7 +27,6 @@ const Login = () => {
         username,
         password,
       };
-      setIsLoading(false);
 
       const { error, data } = await Auth.authenticate(
         "/api/users/login",
@@ -38,16 +35,15 @@ const Login = () => {
       );
 
       if (error) {
+        setIsLoading(false);
+        console.log(error);
         message.warn(error);
+      } else {
+        setIsLoading(false);
+        sessionStorage.setItem("auth", JSON.stringify(data));
+        console.log(data);
+        router.push("/language");
       }
-
-      sessionStorage.setItem("auth", JSON.stringify(data));
-
-      setIsLoading(false);
-
-      // router.push('/language')
-
-      console.log(data);
     }
   };
 
@@ -98,8 +94,8 @@ const Login = () => {
         <button
           className={
             isLoading
-              ? "h-[50px] flex items-center justify-center gap-2 rounded bg-[#52B1A4] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
-              : "h-[50px] flex items-center justify-center gap-2 rounded bg-[#AAE8DF] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
+              ? "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
+              : "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
           }
           onClick={sendRequest}
         >
@@ -107,15 +103,17 @@ const Login = () => {
           {isLoading && <Spinner />}
         </button>
         <div className="py-4 text-center">Or</div>
-        <button className="w-full h-[50px] rounded bg-[#525765] text-[#D5D7DA] py-2 mb-4 font-bold ">
+        <button className="w-full h-[50px] boxshadow  rounded bg-[#525765] text-[#D5D7DA] py-2 mb-4 font-bold ">
           Continue with Google
         </button>
       </form>
       <div className="text-[#1F2D2B] text-center">
-        Dont have an account? {""}
-        <span className="text-[#52B1A4] ">
-          <Link href="/signup"> Sign Up</Link>
-        </span>
+        Dont have an account?{" "}
+        <Link href="/signup">
+          <span className="text-[#52B1A4] cursor-pointer hover:text-gray-600">
+            Sign Up
+          </span>
+        </Link>
       </div>
     </div>
   );

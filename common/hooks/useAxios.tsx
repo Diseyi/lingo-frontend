@@ -1,11 +1,9 @@
-import { useState } from "react";
+
 import axios, { Method } from "axios";
 
 const LINGO_IP = process.env.LINGO_IP as string;
 
 const useAxios = () => {
-  const [data, setData] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
 
   const authenticate = async (url: string, method: Method, body: any) => {
     try {
@@ -14,13 +12,15 @@ const useAxios = () => {
         method: method,
         data: body,
       });
-      const data = response?.data;
-      setData(data);
+      return {
+        data: response?.data,
+      };
     } catch (error: any) {
-      setError(error);
+      return {
+        error: error.response.data.error,
+        status: error.response.status,
+      };
     }
-
-    return { error, data };
   };
 
   const fetchData = async (
@@ -38,13 +38,14 @@ const useAxios = () => {
           Authorization: `Bearer ${Token.token}`,
         },
       });
-      const data = response?.data;
-      setData(data);
+      return {
+        data: response?.data,
+      };
     } catch (error: any) {
-      setError(error);
+      return {
+        error: error,
+      };
     }
-
-    return { error, data };
   };
   return { fetchData, authenticate };
 };
