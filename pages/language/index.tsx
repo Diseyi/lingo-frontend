@@ -12,7 +12,7 @@ const { Option } = Select;
 const Language = () => {
   const [language, setLanguage] = useState({} as any);
   const [room, setRoom] = useState([] as any);
-   const { getLang, error, isLoading } = useLanguage();
+  const { getLang, error, isLoading } = useLanguage();
 
   const group = [
     { id: 0, checked: false, value: "English" },
@@ -41,8 +41,8 @@ const Language = () => {
     };
 
     await getLang(payload);
-    
-    router.push("/chats")
+
+    router.push("/chats");
   };
 
   const getCheckedLang = (e: any) => {
@@ -79,9 +79,15 @@ const Language = () => {
   };
 
   return (
-    <section className="bg-[#f2f3f5] h-screen w-full ">
+    <section className="bg-[#f2f3f5] h-screen w-full  ">
       <main className="w-[90%] md:w-[500px] m-auto  ">
         <div className=" flex justify-center my-6">
+          <div
+            onClick={() => router.back()}
+            className="font-semibold md:absolute  md:left-32 text-[#171B23]  px-8 py-2 rounded hover:shadow-lg border bg-gray-200 text-base cursor-pointer "
+          >
+            &larr; Go back
+          </div>
           <Image src={Logo2.src} alt="" width="136" height="112" className="" />
         </div>
         <div className=" w-5/6 mx-auto">

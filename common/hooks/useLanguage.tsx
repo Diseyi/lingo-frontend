@@ -27,7 +27,6 @@ export const useLanguage = () => {
       const data = response?.data;
       return data;
     } catch (error: any) {
-      const Error = error.response.statusText;
       setIsLoading(false);
       setError("Bad Request");
     }

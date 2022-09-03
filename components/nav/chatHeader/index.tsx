@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import avatar from "../../../assets/icon/avatar.png";
-import menu from "../../../assets/icon/menu.svg"
+import menu from "../../../assets/icon/menu.svg";
 
 const ChatHeader = () => {
   const [showMore, setShowMore] = useState(false);
@@ -18,8 +18,10 @@ const ChatHeader = () => {
             <Image src={avatar.src} width="32px" height="32px" />
           </div>
           <div className="">
-            <div className="font-semibold">Spanish Room</div>
-            <div className="text-xs font-light">
+            <div className="font-semibold text-gray-600 text-base">
+              Spanish Room
+            </div>
+            <div className="text-xs font-medium text-gray-600">
               <span className="">2,000 members, </span>
               <span className="">150 online</span>
             </div>
@@ -35,25 +37,19 @@ const ChatHeader = () => {
 
       {showMore && (
         <div className="bg-white font-light absolute z-20 top-24 right-12 text-[#171B23] border text-base ">
-          <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
+          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 font-semibold cursor-pointer px-6 py-2">
             Room Info
           </div>
-          <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
+          {/* <div className="hover:bg-[#AAE8DF] hover:text-gray-500 font-semibold cursor-pointer px-6 py-2">
             Mute notifications
-          </div>
-          <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
+          </div> */}
+          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 font-semibold cursor-pointer px-6 py-2">
             Leave Room
           </div>
-          <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
-            Select messasges
-          </div>
-          <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
-            Clear messasges
-          </div>
-          <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
+          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 font-semibold cursor-pointer px-6 py-2">
             Translate messages
           </div>
-          <div className="hover:bg-[#AAE8DF] text-[#C92929] cursor-pointer px-6 py-2">
+          <div className="hover:bg-[#AAE8DF]  font-semibold text-[#C92929] cursor-pointer px-6 py-2">
             Report
           </div>
         </div>

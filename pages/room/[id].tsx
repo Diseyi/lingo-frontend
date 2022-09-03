@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Search from "../../components/search";
 import Notification from "../../components/notification";
 import RoomList from "../../components/roomList";
@@ -6,45 +6,31 @@ import EmptyList from "../../components/emptyList";
 import Layout from "../../layout";
 import ChatHeader from "../../components/nav/chatHeader";
 import Add from "../../components/add";
+import Empty from "../../components/empty";
+import { useGroup } from "../../common/hooks/useGroup";
+import { useGroupContext } from "../../common/hooks/useGroupContext";
 
 const RoomId = () => {
-  const [filterChats, setFilterChats] = useState(true);
-  const [isSearch, setIsSearch] = useState(filterChats);
+  const { getGroup, error, isLoading } = useGroup();
+  const { user } = useGroupContext() as any;
+  const groups = user?.groups ? user.groups : [];
 
-  const data = [
-    "Spanish Room",
-    "French Room",
-    "English Room",
-    "Yoruba Room",
-    "Chinese Room",
-    "Latin Room",
-    "Spanish Room",
-    "French Room",
-    "English Room",
-    "Yoruba Room",
-    "Chinese Room",
-    "Latin Room",
-  ];
-
-  const showSearch = () => {
-    setIsSearch(!isSearch);
-  };
+  useEffect(() => {
+    getGroup();
+  }, []);
 
   return (
     <div className="">
       <title>Room</title>
       <Layout
-        notification={<Notification />}
-        search={isSearch ? <Search /> : <></>}
-        icon={<Add />}
-        content={
-          filterChats ? (
-            <RoomList data={data} />
-          ) : (
-            <EmptyList text="Your Rooms on Lingo would appear here" />
-          )
-        }
-        onClick={showSearch}
+      search={<Search />}
+      content={
+         !isLoading && groups.length === 0 ? (
+          <EmptyList text="Your Rooms on Lingo would appear here" />
+        ) : (
+          <RoomList data={groups} isloading={isLoading} />
+        )
+      }
       >
         <ChatHeader />
       </Layout>

@@ -77,12 +77,12 @@ const Home: NextPage = () => {
           ) : (
             <div className=" flex-row gap-4 items-center hidden lg:flex ">
               <Link href="/login">
-                <div className="text-[#171B23] px-8 py-2 rounded hover:border hover:bg-gray-200 text-base cursor-pointer">
+                <div className="c">
                   Login 
                 </div>
               </Link>
               <Link href="/signup">
-                <div className="text-white hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
+                <div className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
                   Sign up
                 </div>
               </Link>

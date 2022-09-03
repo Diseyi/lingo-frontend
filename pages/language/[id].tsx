@@ -1,51 +1,89 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { Select } from "antd";
+import { message, Select } from "antd";
 import { Checkbox } from "antd";
+import Link from "next/link";
 import Spinner from "../../components/spinner";
 import Image from "next/image";
 import Logo2 from "../../assets/icon/logo2.svg";
+import { useLanguage } from "../../common/hooks/useLanguage";
 
 const { Option } = Select;
 
-const index = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [lang, setLang] = useState("");
+const Language = () => {
+  const [language, setLanguage] = useState({} as any);
+  const [room, setRoom] = useState([] as any);
+  const { getLang, error, isLoading } = useLanguage();
 
-  const room: any = [];
-  const roomLanguage = [
-    "English",
-    "French",
-    "Spanish",
-    "Chinese",
-    "Yoruba",
-    "German",
+  const group = [
+    { id: 0, checked: false, value: "English" },
+    { id: 1, checked: false, value: "French" },
+    { id: 2, checked: false, value: "Spanish" },
+    { id: 3, checked: false, value: "Youruba" },
+    { id: 4, checked: false, value: "Igbo" },
+    { id: 5, checked: false, value: "Hausa" },
+    { id: 6, checked: false, value: "Ijaw" },
+    { id: 7, checked: false, value: "German" },
+    { id: 8, checked: false, value: "Chinese" },
+    { id: 9, checked: false, value: "Senegal" },
   ];
 
   const router = useRouter();
 
-  const sendRequest = (e: any) => {
+  const sendRequest = async (e: any) => {
     e.preventDefault();
+    const lang = language.value;
+
+    isValidPayload(lang, room);
+
+    const payload = {
+      lang: lang,
+      room: room,
+    };
+
+    await getLang(payload);
 
     router.push("/chats");
   };
 
   const getCheckedLang = (e: any) => {
-    room.push(e.target.value);
+    group.forEach((item: any) => {
+      if (item.id === e.target.value) {
+        return (item.checked = e.target.checked);
+      }
+    });
+
+    isChecked();
   };
 
   const getLanguage = (value: string) => {
-    setLang(value);
+    setLanguage({
+      ...language,
+      value,
+    });
   };
 
-  const isValidPayload = (lang: string, room: []) => {
-    return lang.length !== 0 && room.length !== 0;
+  const isChecked = () => {
+    const filterChecked = group.filter((item: any) => item.checked === true);
+
+    return filterChecked.map((item: any) => {
+      setRoom([...room, item.value]);
+    });
+  };
+
+  const isValidPayload = (lang: any, room: any) => {
+    if (lang === undefined) {
+      message.warn("Please select a language");
+    } else if (room.length === 0) {
+      message.warn("Please select at lease one room language");
+    }
   };
 
   return (
     <section className="bg-[#f2f3f5] h-screen w-full ">
       <main className="w-[90%] md:w-[500px] m-auto  ">
-        <div className=" flex justify-center my-6">
+        <div className=" flex justify-center  items-center my-6">
+          <div onClick={ () => router.back()} className="font-semibold md:absolute  md:left-32 text-[#171B23]  px-8 py-2 rounded hover:shadow-lg border bg-gray-200 text-base cursor-pointer ">&larr; Go back</div>
           <Image src={Logo2.src} alt="" width="136" height="112" className="" />
         </div>
         <div className=" w-5/6 mx-auto">
@@ -72,10 +110,10 @@ const index = () => {
               }}
               onChange={getLanguage}
             >
-              {roomLanguage.map((item) => (
+              {group.map((item) => (
                 <Option
-                  key={item}
-                  value={item}
+                  key={item.id}
+                  value={item.value}
                   style={{
                     width: "100%",
                     height: "50px",
@@ -84,7 +122,7 @@ const index = () => {
                     fontWeight: "400",
                   }}
                 >
-                  {item}
+                  {item.value}
                 </Option>
               ))}
             </Select>
@@ -95,11 +133,10 @@ const index = () => {
             Please select your desired language room
           </label>
           <div className="py-2 flex flex-col justify-start text-base text-[#171B23]">
-            {roomLanguage.map((item) => (
-              <div key={item} className="my-1">
-                <Checkbox value={item} onChange={getCheckedLang}>
-                  {" "}
-                  {item}{" "}
+            {group.map((item) => (
+              <div key={item.id} className="my-1">
+                <Checkbox value={item.id} onChange={getCheckedLang}>
+                  {item.value}
                 </Checkbox>
               </div>
             ))}
@@ -109,8 +146,8 @@ const index = () => {
           <button
             className={
               isLoading
-                ? "h-[50px] flex items-center justify-center gap-2 rounded-lg bg-[#52B1A4] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
-                : "h-[50px] flex items-center justify-center gap-2 rounded-lg bg-[#AAE8DF] text-[#1F2D2B] w-full py-2 mb-2 font-bold "
+                ? "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
+                : "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
             }
             onClick={sendRequest}
           >
@@ -123,4 +160,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Language;

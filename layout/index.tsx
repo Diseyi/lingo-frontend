@@ -20,7 +20,7 @@ const Layout: React.FC<Props> = ({
   return (
     <section className="h-screen overflow-hidden ">
       <div className="flex w-full h-screen ">
-        <div className="w-[380px] bg-white ">
+        <div className="w-[380px]  bg-white ">
           <div className="">
             <Chatnav />
             {/* <div className=""> {notification} </div> */}
