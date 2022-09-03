@@ -40,13 +40,9 @@ const Language = () => {
       room: room,
     };
 
-    console.log("payload", payload)
-
     await getLang(payload);
-    setLanguage({})
-    setRoom([])
     
-    // router.push("/chats")
+    router.push("/chats")
   };
 
   const getCheckedLang = (e: any) => {

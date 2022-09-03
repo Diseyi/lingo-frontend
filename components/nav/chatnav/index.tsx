@@ -87,18 +87,12 @@ const Chatnav = () => {
           </div>
         </Link>
         <Dropdown overlay={<More />}>
-          <a className="flex flex-col pt-0.5 gap-1 text-white cursor-pointer items-center">
+          <div className="flex flex-col pt-0.5 gap-1 text-white cursor-pointer items-center">
             <MenuIcon />
             <span className="pt-1">More</span>
-          </a>
+          </div>
         </Dropdown>
 
-        {/* <div
-          className="flex flex-col pt-0.5 gap-1 text-white cursor-pointer items-center"
-          onClick={handleShowMore}
-        >
-         
-        </div> */}
       </div>
       {showMore && <More />}
     </div>

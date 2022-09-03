@@ -24,7 +24,6 @@ const UserProvider = ({ children }: any) => {
     }
   }, []);
 
-  console.log("UserContext state:", state);
 
   return (
     <UserContext.Provider value={{ ...state, dispatch }}>

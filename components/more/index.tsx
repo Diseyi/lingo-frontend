@@ -1,12 +1,24 @@
 import React from "react";
 import Link from "next/link";
+import { useLogout } from "../../common/hooks/useLogout";
+import { useRouter } from "next/router";
 
 const More = () => {
+  const { logout } = useLogout();
+  const router = useRouter();
+
+  const handleClick = () => {
+    logout();
+    router.push("/");
+  };
+
   return (
     <div className="bg-white font-light w-48 absolute z-20 top-10 right-0 text-[#171B23] border text-base ">
-      <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
-        <Link href="/language/4545">Change language</Link>
-      </div>
+      <Link href="/language/4545">
+        <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
+          Change language{" "}
+        </div>
+      </Link>
       <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
         Report Bug
       </div>
@@ -14,11 +26,12 @@ const More = () => {
       <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
         Tell a friend
       </div>
-      <Link href="/">
-        <div className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2">
-          Log out
-        </div>
-      </Link>
+      <div
+        className="hover:bg-[#AAE8DF] cursor-pointer px-6 py-2"
+        onClick={handleClick}
+      >
+        Log out
+      </div>
     </div>
   );
 };

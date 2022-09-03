@@ -41,7 +41,7 @@ const index = () => {
         room,
       };
       setIsLoading(false);
-      console.log(payload, checkPayload);
+
     }
 
     router.push("/chats");
@@ -49,13 +49,10 @@ const index = () => {
 
   const getCheckedLang = (e: any) => {
     room.push(e.target.value);
-
-    console.log(room);
   };
 
   const getLanguage = (value: string) => {
     setLang(value);
-    console.log(value);
   };
 
   const isValidPayload = (lang: string, room: []) => {

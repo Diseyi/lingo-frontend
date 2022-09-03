@@ -1,9 +1,8 @@
 import Link from "next/link";
-import React, { useContext } from "react";
+import React from "react";
 import Login from "../../components/form/login";
 import Logo from "../../assets/icon/logo.svg";
 import Image from "next/image";
-import { AuthContext } from "../../store/auth";
 
 const index = () => {
   return (

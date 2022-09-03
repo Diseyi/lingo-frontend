@@ -30,12 +30,10 @@ export const useGroup = () => {
       localStorage.setItem("group", JSON.stringify(data));
       dispatch({ type: "GETUSER", payload: data });
 
-      console.log("group", data);
       return data;
     } catch (error: any) {
       setIsLoading(false);
       setError("Bad Request");
-      console.log(error);
     }
   };
 

@@ -12,7 +12,6 @@ const Friend = () => {
  const { getGroup, error, isLoading } = useGroup();
  const { user } = useGroupContext() as any;
  const friends = user?.friends ? user.friends : []
- console.log(friends);
 
  useEffect(() => {
    getGroup();
@@ -27,7 +26,7 @@ const Friend = () => {
           !isLoading && friends.length === 0 ? (
             <EmptyList text="Your Friends on Lingo would appear here" />
           ) : (
-            <FriendList item={friends} />
+            <FriendList data={friends} isloading={isLoading} />
           )
         }
       >

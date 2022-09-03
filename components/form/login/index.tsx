@@ -25,7 +25,7 @@ const Login = () => {
       };
 
       await auth("/api/users/login", "post", payload);
-      console.log(payload)
+      router.push("/chats")
     }
   };
 

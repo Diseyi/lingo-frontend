@@ -14,9 +14,8 @@ const Home: NextPage = () => {
   useEffect(() => checkLoggedIn());
 
   const checkLoggedIn = () => {
-    const userInSession = sessionStorage.getItem("auth") || "";
+    const userInSession = localStorage.getItem("user") || "";
     const parsed = userInSession ? JSON.parse(userInSession) : "";
-    console.log(parsed);
 
     if (parsed) {
       setIsLoggedIn(true);

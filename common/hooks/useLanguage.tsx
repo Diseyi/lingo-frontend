@@ -25,13 +25,11 @@ export const useLanguage = () => {
       });
       setIsLoading(false);
       const data = response?.data;
-      console.log(data)
       return data;
     } catch (error: any) {
       const Error = error.response.statusText;
       setIsLoading(false);
       setError("Bad Request");
-      console.log(Error);
     }
   };
 
