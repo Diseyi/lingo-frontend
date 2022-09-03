@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { message, Select } from "antd";
+import { Select } from "antd";
 import { Checkbox } from "antd";
-import type { CheckboxChangeEvent } from "antd/es/checkbox";
-import { ChatApi } from "../../common/api/chat.api";
 import Spinner from "../../components/spinner";
 import Image from "next/image";
 import Logo2 from "../../assets/icon/logo2.svg";
@@ -28,21 +26,6 @@ const index = () => {
 
   const sendRequest = (e: any) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    const checkPayload = isValidPayload(lang, room);
-
-    if (!checkPayload) {
-      setIsLoading(false);
-      message.warn("choose a language and atleast one room");
-    } else {
-      const payload = {
-        lang,
-        room,
-      };
-      setIsLoading(false);
-
-    }
 
     router.push("/chats");
   };
