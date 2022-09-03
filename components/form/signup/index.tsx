@@ -1,40 +1,35 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, {useState } from "react";
+import { useRouter } from "next/router"; 4
+import { useAuth } from "../../../common/hooks/useAuth";
 import { Input, message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
 
 const SignupForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { auth, error, isLoading } = useAuth()
 
   const router = useRouter()
 
-  const sendRequest = (e: any) => {
+  const sendRequest = async(e: any) => {
     e.preventDefault();
-    setIsLoading(true);
 
     const samePassword = comparePassword();
     const checkPayload = isValidPayload(username, password, samePassword)
 
     if (!samePassword) {
       message.warn("Password doesn't match");
-      setIsLoading(false)
     } else if (checkPayload) {
        message.warn("Username or password shouldn't be empty");
-       setIsLoading(false);
     } else {
       const payload = {
         username,
         password,
       };
 
-      setIsLoading(false);
-
-      console.log(payload);
-
+      await auth("/api/users/signup", "post", payload);
       router.push("/language")
     }
   };

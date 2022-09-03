@@ -4,46 +4,29 @@ import { Input, message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
 import useAxios from "../../../common/hooks/useAxios";
+import { useAuth } from "../../../common/hooks/useAuth";
 
 const Login = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const Auth = useAxios() as any;
+  const { auth, error, isLoading } = useAuth();
 
   const router = useRouter();
 
   const sendRequest = async (e: any) => {
     e.preventDefault();
-    setIsLoading(true);
 
     const checkPayload = isValidPayload(username, password);
     if (checkPayload) {
       message.warn("Username or password shouldn't be empty");
-      setIsLoading(false);
     } else {
       const payload = {
         username,
         password,
       };
 
-      const { error, data } = await Auth.authenticate(
-        "/api/users/login",
-        "post",
-        payload
-      );
-
-      if (error) {
-        setIsLoading(false);
-        console.log(error);
-        message.warn(error);
-      } else {
-        setIsLoading(false);
-        sessionStorage.setItem("auth", JSON.stringify(data));
-        console.log(data);
-        router.push("/language");
-      }
+      await auth("/api/users/login", "post", payload);
+      console.log(payload)
     }
   };
 
