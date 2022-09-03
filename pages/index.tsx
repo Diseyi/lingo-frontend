@@ -70,16 +70,16 @@ const Home: NextPage = () => {
 
           {isLoggedIn ? (
             <div className="flex-row items-center hidden lg:flex ">
-              <div className="text-base font-bold bg-[#AAE8DF] px-8 mx-2 py-2 rounded ">
-                <Link href="/chats">Go to chat </Link>
-              </div>
+              <Link href="/chats">
+                <div className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
+                  Go to chat
+                </div>
+              </Link>
             </div>
           ) : (
             <div className=" flex-row gap-4 items-center hidden lg:flex ">
               <Link href="/login">
-                <div className="c">
-                  Login 
-                </div>
+                <div className="c">Login</div>
               </Link>
               <Link href="/signup">
                 <div className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
