@@ -12,7 +12,6 @@ type Props = {
 
 const Layout: React.FC<Props> = ({
   children,
-  notification,
   onClick,
   content,
   search,
@@ -24,7 +23,7 @@ const Layout: React.FC<Props> = ({
         <div className="w-[380px] bg-white ">
           <div className="">
             <Chatnav />
-            <div className=""> {notification} </div>
+            {/* <div className=""> {notification} </div> */}
             <div className=""> {search} </div>
           </div>
           <div className="" onClick={onClick} > {icon} </div>

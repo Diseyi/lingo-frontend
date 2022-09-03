@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { Input, message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
-import useAxios from "../../../common/hooks/useAxios";
 import { useAuth } from "../../../common/hooks/useAuth";
 
 const Login = () => {

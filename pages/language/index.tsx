@@ -5,24 +5,14 @@ import { Checkbox } from "antd";
 import Spinner from "../../components/spinner";
 import Image from "next/image";
 import Logo2 from "../../assets/icon/logo2.svg";
-import useSessionStorage from "../../common/hooks/useSessionStorage";
-import useAxios from "../../common/hooks/useAxios";
+import { useLanguage } from "../../common/hooks/useLanguage";
 
 const { Option } = Select;
 
 const Language = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState({} as any);
   const [room, setRoom] = useState([] as any);
-
-  const roomLanguage = [
-    "English",
-    "French",
-    "Spanish",
-    "Chinese",
-    "Yoruba",
-    "German",
-  ];
+   const { getLang, error, isLoading } = useLanguage();
 
   const group = [
     { id: 0, checked: false, value: "English" },
@@ -37,16 +27,10 @@ const Language = () => {
     { id: 9, checked: false, value: "Senegal" },
   ];
 
-  const Token = useSessionStorage();
-  const token = Token;
-  const Auth = useAxios() as any;
-
   const router = useRouter();
 
   const sendRequest = async (e: any) => {
     e.preventDefault();
-    setIsLoading(true);
-
     const lang = language.value;
 
     isValidPayload(lang, room);
@@ -56,22 +40,13 @@ const Language = () => {
       room: room,
     };
 
-    const { error, data } = await Auth.fetchData(
-      "/api/users/lang",
-      "patch",
-      payload,
-      token
-    );
+    console.log("payload", payload)
 
-    if (error) {
-      setIsLoading(false);
-      console.log(error);
-      message.warn(error);
-    } else {
-      setIsLoading(false);
-      console.log(data);
-      router.push("/chats");
-    }
+    await getLang(payload);
+    setLanguage({})
+    setRoom([])
+    
+    // router.push("/chats")
   };
 
   const getCheckedLang = (e: any) => {
@@ -137,10 +112,10 @@ const Language = () => {
               }}
               onChange={getLanguage}
             >
-              {roomLanguage.map((item) => (
+              {group.map((item) => (
                 <Option
-                  key={item}
-                  value={item}
+                  key={item.id}
+                  value={item.value}
                   style={{
                     width: "100%",
                     height: "50px",
@@ -149,7 +124,7 @@ const Language = () => {
                     fontWeight: "400",
                   }}
                 >
-                  {item}
+                  {item.value}
                 </Option>
               ))}
             </Select>

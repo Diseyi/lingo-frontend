@@ -1,54 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { message } from "antd";
-import Image from "next/image";
 import Search from "../../components/search";
-import Notification from "../../components/notification";
 import Empty from "../../components/empty";
 import EmptyList from "../../components/emptyList";
 import Layout from "../../layout";
 import FriendList from "../../components/friendList";
-import useAxios from "../../common/hooks/useAxios";
-import avatar from "../../assets/icon/avatar.png";
+import { useGroup } from "../../common/hooks/useGroup";
+import { useGroupContext } from "../../common/hooks/useGroupContext";
 
 const Friend = () => {
-  const [filterChats, setFilterChats] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [friends, setFriends] = useState([] as any);
+ const { getGroup, error, isLoading } = useGroup();
+ const { user } = useGroupContext() as any;
+ const friends = user?.friends ? user.friends : []
+ console.log(friends);
 
-  const Auth = useAxios() as any;
-
-  useEffect(() => {
-    async function sendRequest() {
-      setIsLoading(true);
-
-      const { error, data } = await Auth.authenticate("/api/users", "get");
-
-      if (error) {
-        setIsLoading(false);
-        console.log(error);
-        message.warn(error);
-      } else {
-        setIsLoading(false);
-        setFriends([...data]);
-        console.log(friends);
-      }
-    }
-
-    sendRequest();
-  }, []);
+ useEffect(() => {
+   getGroup();
+ }, []);
 
   return (
     <div className="">
       <title>Room</title>
       <Layout
-        notification={<Notification />}
-        search={
-          <Search searchvalue={searchValue}  />
-        }
+        search={<Search searchvalue={searchValue} />}
         content={
-          filterChats ? (
-            <EmptyList text="Your Chats on Lingo would appear here" />
+          !isLoading && friends.length === 0 ? (
+            <EmptyList text="Your Friends on Lingo would appear here" />
           ) : (
             <FriendList item={friends} />
           )
