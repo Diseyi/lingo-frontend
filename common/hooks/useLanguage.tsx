@@ -7,6 +7,7 @@ const LINGO_IP = process.env.LINGO_IP as string;
 export const useLanguage = () => {
   const [error, setError] = useState(null as any);
   const [isLoading, setIsLoading] = useState<any>(null);
+  const [getdata, setGetdata] = useState({})
 
   const { user } = useAuthContext() as any;
 
@@ -24,8 +25,6 @@ export const useLanguage = () => {
         data: body,
       });
       setIsLoading(false);
-      const data = response?.data;
-      return data;
     } catch (error: any) {
       setIsLoading(false);
       setError("Bad Request");

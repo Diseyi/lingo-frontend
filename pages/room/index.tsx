@@ -9,11 +9,12 @@ import { useGroupContext } from "../../common/hooks/useGroupContext";
 
 const Room = () => {
   const { getGroup, error, isLoading } = useGroup();
-  const { user } = useGroupContext() as any;
+  const { user, dispatch } = useGroupContext() as any;
   const groups = user?.groups ? user.groups : [];
 
   useEffect(() => {
     getGroup();
+    return dispatch({ type: "GETUSER", payload: null});
   }, []);
 
   return (

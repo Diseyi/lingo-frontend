@@ -27,7 +27,6 @@ export const useGroup = () => {
       setIsLoading(false);
       const data = response?.data
 
-      localStorage.setItem("group", JSON.stringify(data));
       dispatch({ type: "GETUSER", payload: data });
 
       return data;

@@ -16,15 +16,6 @@ const UserProvider = ({ children }: any) => {
     user: null,
   });
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("group") as any);
-
-    if (user) {
-      dispatch({ type: "GETUSER", payload: user });
-    }
-  }, []);
-
-
   return (
     <UserContext.Provider value={{ ...state, dispatch }}>
       {children}
