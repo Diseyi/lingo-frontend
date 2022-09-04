@@ -25,7 +25,7 @@ const RoomsList = ({ data, isloading }: Props) => {
             return (
               <div
                 key={item}
-                className="flex w-full flex-row gap-4 py-2 hover:bg-[#E9EBEC] hover:rounded cursor-pointer border-b px-4 items-center"
+                className="flex w-full flex-row gap-4 py-2 hover:bg-[#E9EBEC] dark:hover:bg-[#11473F] hover:rounded dark:text-[#DCE0E8] cursor-pointer border-b dark:border-[#3f524f] px-4 items-center"
                 onClick={() => router.push(`/room/${item}`)}
               >
                 <div className="">

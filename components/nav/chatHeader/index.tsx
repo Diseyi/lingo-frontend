@@ -36,20 +36,17 @@ const ChatHeader = () => {
       </div>
 
       {showMore && (
-        <div className="bg-white font-light absolute z-20 top-24 right-12 text-[#171B23] border text-base ">
-          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 font-semibold cursor-pointer px-6 py-2">
+        <div className="bg-white font-light dark:bg-[#3f524f] absolute z-20 top-24 right-12 text-[#171B23] border text-base ">
+          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 dark:hover:text-gray-500 dark:text-[#DCE0E8] font-semibold cursor-pointer px-6 py-2">
             Room Info
           </div>
-          {/* <div className="hover:bg-[#AAE8DF] hover:text-gray-500 font-semibold cursor-pointer px-6 py-2">
-            Mute notifications
-          </div> */}
-          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 font-semibold cursor-pointer px-6 py-2">
+          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 dark:hover:text-gray-500 dark:text-[#DCE0E8] font-semibold cursor-pointer px-6 py-2">
             Leave Room
           </div>
-          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 font-semibold cursor-pointer px-6 py-2">
+          <div className="hover:bg-[#AAE8DF] hover:text-gray-500 dark:hover:text-gray-500 dark:text-[#DCE0E8] font-semibold cursor-pointer px-6 py-2">
             Translate messages
           </div>
-          <div className="hover:bg-[#AAE8DF]  font-semibold text-[#C92929] cursor-pointer px-6 py-2">
+          <div className="hover:bg-[#AAE8DF] dark:text-red-500 font-semibold  text-[#C92929] cursor-pointer px-6 py-2">
             Report
           </div>
         </div>

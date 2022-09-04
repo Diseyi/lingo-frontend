@@ -35,10 +35,10 @@ const Language = () => {
 
     isValidPayload(lang, room);
 
-    const payload = {
-      lang: lang,
-      room: room,
-    };
+      const payload = {
+        lang: lang,
+        groups: room,
+      };
 
     await getLang(payload);
 
@@ -79,7 +79,7 @@ const Language = () => {
   };
 
   return (
-    <section className="bg-[#f2f3f5] h-screen w-full  ">
+    <section className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen w-full  ">
       <main className="w-[90%] md:w-[500px] m-auto  ">
         <div className=" flex justify-center my-6">
           <div
@@ -133,10 +133,13 @@ const Language = () => {
           </div>
         </div>
         <div className="w-5/6  m-auto my-8">
-          <label htmlFor="" className="font-medium text-base text-[#171B23]">
+          <label
+            htmlFor=""
+            className="font-medium dark:text-[#DCE0E8] text-base text-[#171B23]"
+          >
             Please select your desired language room
           </label>
-          <div className="py-2 flex flex-col justify-start text-base text-[#171B23]">
+          <div className="py-2 flex flex-col dark:text-[#DCE0E8]  justify-start text-base text-[#171B23]">
             {group.map((item) => (
               <div key={item.id} className="my-1">
                 <Checkbox value={item.id} onChange={getCheckedLang}>
@@ -150,8 +153,8 @@ const Language = () => {
           <button
             className={
               isLoading
-                ? "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
-                : "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
+                ? "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
+                : "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
             }
             onClick={sendRequest}
           >

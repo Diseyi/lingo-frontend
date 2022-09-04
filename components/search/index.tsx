@@ -22,7 +22,7 @@ const Search = ({searchvalue}: any) => {
         <input
           type="text"
           id="simple-search"
-          className="bg-[#E9EBEC] text-gray-900 text-sm rounded-lg w-full pl-10 p-2.5 "
+          className="bg-[#E9EBEC] dark:bg-[#41494C] dark:text-[#DCE0E8] text-gray-900 text-sm rounded-lg w-full pl-10 p-2.5 "
           placeholder="Search"
           value={searchvalue}
           required

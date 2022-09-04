@@ -58,69 +58,75 @@ const SignupForm = () => {
 
   return (
     <div className="w-[90%] md:w-[500px] m-auto   ">
-      <h2 className="font-medium text-xl lg:text-4xl text-center my-4 mb-14 py-2 ">
+      <h2 className="font-medium dark:text-[#DCE0E8] text-xl lg:text-4xl text-center my-4 mb-10 py-2 ">
         Sign Up
       </h2>
       <form action="" className="mt-6  p-2 ">
         <div className="flex flex-col gap-0.5 py-2 mb-4">
-          <label htmlFor="username" className=" font-medium text-base">
+          <label
+            htmlFor="username"
+            className="dark:text-[#DCE0E8] font-medium text-base"
+          >
             Username
           </label>
-          <Input
-            placeholder="Username"
-            size="large"
+          <input
+            type="text"
             value={username}
             onChange={getUsername}
-            style={{ background: "#E9EBEC", height: "50px", border: "none" }}
+            className="h-[50px] bg-[#E9EBEC] dark:text-[#DCE0E8] dark:bg-[#41494D] px-4 rounded "
           />
         </div>
         <div className="flex flex-col gap-0.5 py-2 mb-4">
-          <label htmlFor="username" className=" font-medium text-base">
+          <label
+            htmlFor="username"
+            className="dark:text-[#DCE0E8] font-medium text-base"
+          >
             Password
           </label>
-          <Input.Password
-            placeholder="Password"
-            size="large"
+          <input
+            type="text"
             value={password}
             onChange={getPassword}
-            style={{ background: "#E9EBEC", height: "50px", border: "none" }}
+            className="h-[50px] bg-[#E9EBEC] dark:text-[#DCE0E8] dark:bg-[#41494D] px-4 rounded "
           />
         </div>
         <div className="flex flex-col gap-0.5 py-2 mb-4">
-          <label htmlFor="username" className=" font-medium text-base">
+          <label
+            htmlFor="username"
+            className="dark:text-[#DCE0E8] font-medium text-base"
+          >
             Comfirm Password
           </label>
-          <Input.Password
-            placeholder="Repeat password"
-            size="large"
+          <input
+            type="text"
             value={confirmPassword}
             onChange={getConfirmPassword}
-            style={{ background: "#E9EBEC", height: "50px", border: "none" }}
+            className="h-[50px] bg-[#E9EBEC] dark:text-[#DCE0E8] dark:bg-[#41494D] px-4 rounded "
           />
         </div>
         <button
           className={
             isLoading
-              ? "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
-              : "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base boxshadow bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
+              ? "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
+              : "h-[50px] flex items-center text-white hover:bg-[#AAE8DF] hover:text-gray-600 rounded text-base bg-[#52B1A4] cursor-pointer justify-center gap-2 rounded w-full py-2 mb-2 font-bold "
           }
           onClick={sendRequest}
         >
           Sign Up
           {isLoading && <Spinner />}
         </button>
-        <div className="py-4 text-center">Or</div>
+        <div className="py-4 dark:text-[#DCE0E8] text-center">Or</div>
         <button className="w-full h-[50px] rounded bg-[#525765] text-[#D5D7DA] py-2 mb-4 font-bold ">
           Continue with Google
         </button>
       </form>
-      <div className="text-[#1F2D2B] text-center">
+      <div className="text-[#1F2D2B] dark:text-[#DCE0E8] text-center">
         Already have an account? {""}
-          <Link href="/login">
-            <span className="text-[#52B1A4] cursor-pointer hover:text-gray-600">
-              Login
-            </span>
-          </Link>
+        <Link href="/login">
+          <span className="text-[#52B1A4] cursor-pointer hover:text-gray-600">
+            Login
+          </span>
+        </Link>
       </div>
     </div>
   );
