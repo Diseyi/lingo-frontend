@@ -12,6 +12,7 @@ module.exports = {
     },
   },
   content: [
+    "./node_modules/flowbite-react/**/*.js",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
@@ -34,5 +35,5 @@ module.exports = {
     typography: ["dark"],
   },
   // eslint-disable-next-line no-undef
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("flowbite/plugin")],
 };

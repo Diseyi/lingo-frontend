@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { message, Select } from "antd";
-import { Checkbox } from "antd";
 import Spinner from "../../components/spinner";
 import Image from "next/image";
 import Logo2 from "../../assets/icon/logo2.svg";
+import Lingo from "../../assets/icon/Lingo.svg";
 import { useLanguage } from "../../common/hooks/useLanguage";
+import { useThemeContext } from "../../common/hooks/useThemeContext";
 
 const { Option } = Select;
 
 const Language = () => {
+  const { state } = useThemeContext() as any;
+
   const [language, setLanguage] = useState({} as any);
-  const [room, setRoom] = useState([] as any);
   const { getLang, error, isLoading } = useLanguage();
 
-  const group = [
+  const [room, setRoom] = useState([
     { id: 0, checked: false, value: "English" },
     { id: 1, checked: false, value: "French" },
     { id: 2, checked: false, value: "Spanish" },
@@ -25,34 +27,34 @@ const Language = () => {
     { id: 7, checked: false, value: "German" },
     { id: 8, checked: false, value: "Chinese" },
     { id: 9, checked: false, value: "Senegal" },
-  ];
+  ]);
 
   const router = useRouter();
 
   const sendRequest = async (e: any) => {
     e.preventDefault();
     const lang = language.value;
+    const filterRoom = isChecked();
 
-    isValidPayload(lang, room);
-
-      const payload = {
-        lang: lang,
-        groups: room,
-      };
-
-    await getLang(payload);
-
-    router.push("/chats");
+    const validity = isValidPayload(lang, filterRoom);
+    const payload = {
+      lang: lang,
+      groups: filterRoom,
+    };
+    if (!validity) {
+      await getLang(payload);
+      console.log(payload);
+      router.push("/chats");
+    }
   };
 
-  const getCheckedLang = (e: any) => {
-    group.forEach((item: any) => {
-      if (item.id === e.target.value) {
-        return (item.checked = e.target.checked);
-      }
-    });
-
-    isChecked();
+  const handleCheck = (id: any) => {
+    setRoom(
+      room.map((todo) => {
+        if (todo.id === id) return { ...todo, checked: !todo.checked };
+        return todo;
+      })
+    );
   };
 
   const getLanguage = (value: string) => {
@@ -63,37 +65,65 @@ const Language = () => {
   };
 
   const isChecked = () => {
-    const filterChecked = group.filter((item: any) => item.checked === true);
+    const filterChecked = room.filter((item: any) => item.checked === true);
 
     return filterChecked.map((item: any) => {
-      setRoom([...room, item.value]);
+      return item.value;
     });
   };
 
   const isValidPayload = (lang: any, room: any) => {
     if (lang === undefined) {
       message.warn("Please select a language");
+      return true;
     } else if (room.length === 0) {
       message.warn("Please select at lease one room language");
+      return true;
+    } else {
+      return false;
     }
   };
 
   return (
-    <section className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen w-full  ">
+    <section className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen w-full ">
       <main className="w-[90%] md:w-[500px] m-auto  ">
-        <div className=" flex justify-center my-6">
+        <div className=" flex justify-center  items-center my-8">
           <div
             onClick={() => router.back()}
             className="font-semibold md:absolute  md:left-32 text-[#171B23]  px-8 py-2 rounded hover:shadow-lg border bg-gray-200 text-base cursor-pointer "
           >
             &larr; Go back
           </div>
-          <Image src={Logo2.src} alt="" width="136" height="112" className="" />
+          <div className="">
+            {state === "light" && (
+              <div className="">
+                <Image
+                  src={Logo2.src}
+                  alt=""
+                  width="136"
+                  height="112"
+                  className=""
+                />
+              </div>
+            )}
+
+            {state === "dark" && (
+              <div className="">
+                <Image
+                  src={Lingo.src}
+                  width="136px"
+                  height="112px"
+                  alt=""
+                  className=""
+                />
+              </div>
+            )}
+          </div>
         </div>
         <div className=" w-5/6 mx-auto">
           <label
             htmlFor=""
-            className=" text-[#171B23] font-semibold text-base "
+            className=" text-[#171B23] dark:text-[#DCE0E8] font-semibold text-base "
           >
             What language would you love to communicate with?
           </label>
@@ -114,7 +144,7 @@ const Language = () => {
               }}
               onChange={getLanguage}
             >
-              {group.map((item) => (
+              {room.map((item) => (
                 <Option
                   key={item.id}
                   value={item.value}
@@ -139,12 +169,33 @@ const Language = () => {
           >
             Please select your desired language room
           </label>
-          <div className="py-2 flex flex-col dark:text-[#DCE0E8]  justify-start text-base text-[#171B23]">
-            {group.map((item) => (
-              <div key={item.id} className="my-1">
-                <Checkbox value={item.id} onChange={getCheckedLang}>
+          <div className="py-2 flex flex-col justify-start text-base text-[#171B23]">
+            {room.map((item) => (
+              <div key={item.id} className="my-1 flex items-center mr-4">
+                <div className="" onChange={() => handleCheck(item.id)}>
+                  {item.checked ? (
+                    <input
+                      checked
+                      type="checkbox"
+                      name=""
+                      id="teal-checkbox"
+                      className="text-teal-600  dark:bg-[#f2f3f5] bg-gray-200 "
+                    />
+                  ) : (
+                    <input
+                      type="checkbox"
+                      name=""
+                      id=""
+                      className=" border border-gray-100  dark:bg-[#f2f3f5] bg-gray-200 "
+                    />
+                  )}
+                </div>
+                <label
+                  htmlFor="teal-checkbox"
+                  className="ml-2 text-sm text-[#171B23] dark:text-[#DCE0E8]"
+                >
                   {item.value}
-                </Checkbox>
+                </label>
               </div>
             ))}
           </div>

@@ -10,7 +10,6 @@ const index = () => {
 
   const { state } = useThemeContext() as any;
   
-
   return (
     <div className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen ">
       <header className="hidden  md:block">
