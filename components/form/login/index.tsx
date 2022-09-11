@@ -69,7 +69,7 @@ const Login = () => {
             Password
           </label>
           <input
-            type="text"
+            type="password"
             value={password}
             onChange={getPassword}
             className="h-[50px] bg-[#E9EBEC] dark:text-[#DCE0E8] dark:bg-[#41494D] px-4 rounded "
