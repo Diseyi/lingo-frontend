@@ -29,6 +29,13 @@ const Friend = () => {
             <FriendList data={friends} isloading={isLoading} />
           )
         }
+        mobileContent={
+          !isLoading && friends.length === 0 ? (
+            <EmptyList text="Your Friends on Lingo would appear here" />
+          ) : (
+            <FriendList data={friends} isloading={isLoading} />
+          )
+        }
       >
         <Empty />
       </Layout>

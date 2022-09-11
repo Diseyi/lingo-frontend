@@ -14,6 +14,7 @@ const Chats = () => {
       <Layout
         search={<Search />}
         content={<EmptyList text="Your Chats on Lingo would appear here" />}
+        mobileContent={<EmptyList text="Your Chats on Lingo would appear here" />}
       >
         <Empty />
       </Layout>

@@ -30,6 +30,13 @@ const Room = () => {
             <RoomList data={groups} isloading={isLoading} />
           )
         }
+        mobileContent={
+           !isLoading && groups.length === 0 ? (
+            <EmptyList text="Your Rooms on Lingo would appear here" />
+          ) : (
+            <RoomList data={groups} isloading={isLoading} />
+          )
+        }
       >
         <Empty />
       </Layout>
