@@ -85,12 +85,12 @@ const Language = () => {
   };
 
   return (
-    <section className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen w-full ">
+    <section className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen w-full overflow-y-auto  ">
       <main className="w-[90%] md:w-[500px] m-auto  ">
-        <div className=" flex justify-center  items-center my-8">
+        <div className=" flex flex-col md:flex-row justify-center relative items-center my-8">
           <div
             onClick={() => router.back()}
-            className="font-semibold absolute left-4 md:left-32 text-[#171B23] py-1 px-8 md:py-2 rounded hover:shadow-lg border bg-gray-200 text-base cursor-pointer "
+            className="font-semibold hidden md:block absolute left-4 md:left-32 text-[#171B23] px-8 py-2 rounded hover:shadow-lg border bg-gray-200 text-base cursor-pointer "
           >
             &larr; Go back
           </div>
@@ -117,8 +117,14 @@ const Language = () => {
               </div>
             )}
           </div>
+          <div
+            onClick={() => router.back()}
+            className="font-semibold  md:hidden text-[#171B23] absolute -bottom-4 left-4 py-1 px-8 rounded hover:shadow-lg border bg-gray-200 text-base cursor-pointer "
+          >
+            &larr; Go back
+          </div>
         </div>
-        <div className=" w-5/6 mx-auto">
+        <div className=" w-5/6 mx-auto pt-6">
           <label
             htmlFor=""
             className=" text-[#171B23] dark:text-[#DCE0E8] font-semibold text-base "
