@@ -90,7 +90,7 @@ const Language = () => {
         <div className=" flex justify-center  items-center my-8">
           <div
             onClick={() => router.back()}
-            className="font-semibold md:absolute  md:left-32 text-[#171B23]  px-8 py-2 rounded hover:shadow-lg border bg-gray-200 text-base cursor-pointer "
+            className="font-semibold  absolute left-4 md:left-32 text-[#171B23]  py-1 px-8 md:py-2  rounded hover:shadow-lg border bg-gray-200 text-base cursor-pointer "
           >
             &larr; Go back
           </div>
