@@ -70,11 +70,6 @@ body {
   border: none;
 }
 
-.ant-checkbox-checked .ant-checkbox-inner {
-background-color: #52B1A4;
-border-color: #52B1A4;
-}
-
 .ant-input-affix-wrapper-lg {
 padding: 0 11px;
 
@@ -92,6 +87,6 @@ padding: 0 11px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2f3646;
+  background: #cfd7ea;
   border-radius: 10px;
 }
