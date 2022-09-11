@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useLogout } from "../../common/hooks/useLogout";
+import { useLogout } from "../../hooks/useLogout";
 import { useRouter } from "next/router";
 import DarkModeToggle from "../dark-mode-toggle";
 

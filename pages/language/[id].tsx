@@ -5,15 +5,15 @@ import Spinner from "../../components/spinner";
 import Image from "next/image";
 import Logo2 from "../../assets/icon/logo2.svg";
 import Lingo from "../../assets/icon/Lingo.svg";
-import { useLanguage } from "../../common/hooks/useLanguage";
-import { useThemeContext } from "../../common/hooks/useThemeContext";
+import { useLanguage } from "../../hooks/useLanguage";
+import { useTheme } from "next-themes";
 
 const { Option } = Select;
 
 const Language = () => {
-  const { state } = useThemeContext() as any;
-  
   const [language, setLanguage] = useState({} as any);
+  const { theme, setTheme } = useTheme();
+
   const { getLang, error, isLoading } = useLanguage();
 
   const [room, setRoom] = useState([
@@ -43,11 +43,9 @@ const Language = () => {
     };
     if (!validity) {
       await getLang(payload);
-      console.log(payload)
-       router.push("/chats");
+      console.log(payload);
+      router.push("/chats");
     }
-
-   
   };
 
   const handleCheck = (id: any) => {
@@ -97,25 +95,23 @@ const Language = () => {
             &larr; Go back
           </div>
           <div className="">
-            {state === "light" && (
-              <div className="">
-                <Image
-                  src={Logo2.src}
-                  alt=""
-                  width="136"
-                  height="112"
-                  className=""
-                />
-              </div>
-            )}
-
-            {state === "dark" && (
+            {theme === "dark" ? (
               <div className="">
                 <Image
                   src={Lingo.src}
                   width="136px"
                   height="112px"
                   alt=""
+                  className=""
+                />
+              </div>
+            ) : (
+              <div className="">
+                <Image
+                  src={Logo2.src}
+                  alt=""
+                  width="136"
+                  height="112"
                   className=""
                 />
               </div>

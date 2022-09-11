@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { useThemeContext } from "../common/hooks/useThemeContext";
+import { useThemeContext } from "../hooks/useThemeContext";
 
 const DarkModeToggle: React.FC = () => {
   const [mounted, setMounted] = React.useState(false);

@@ -4,8 +4,8 @@ import Empty from "../../components/empty";
 import EmptyList from "../../components/emptyList";
 import Layout from "../../layout";
 import FriendList from "../../components/friendList";
-import { useGroup } from "../../common/hooks/useGroup";
-import { useGroupContext } from "../../common/hooks/useGroupContext";
+import { useGroup } from "../../hooks/useGroup";
+import { useGroupContext } from "../../hooks/useGroupContext";
 
 const Friend = () => {
   const [searchValue, setSearchValue] = useState("");

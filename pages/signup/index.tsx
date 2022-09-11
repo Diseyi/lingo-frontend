@@ -4,10 +4,10 @@ import SignupForm from "../../components/form/signup";
 import Logo from "../../assets/icon/logo.svg";
 import darkmodeLogo from "../../assets/icon/darkmodeLogo.svg";
 import Image from "next/image";
-import { useThemeContext } from "../../common/hooks/useThemeContext";
+import { useTheme } from "next-themes";
 
 const index = () => {
-  const { state } = useThemeContext() as any;
+  const { theme, setTheme } = useTheme();
 
   return (
     <div className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen ">
@@ -16,29 +16,27 @@ const index = () => {
           <div className="flex flex-row items-center gap-9">
             <Link href="/">
               <div className="">
-                {state === "light" && (
-                  <div className="">
-                    <Image
-                      src={Logo.src}
-                      width="230px"
-                      height="68px"
-                      alt=""
-                      className=""
-                    />
-                  </div>
-                )}
-
-                {state === "dark" && (
-                  <div className="">
-                    <Image
-                      src={darkmodeLogo.src}
-                      width="230px"
-                      height="68px"
-                      alt=""
-                      className=""
-                    />
-                  </div>
-                )}
+              {theme === "dark" ? (
+              <div className="">
+                <Image
+                  src={darkmodeLogo.src}
+                  width="230px"
+                  height="68px"
+                  alt=""
+                  className=""
+                />
+              </div>
+            ) : (
+              <div className="">
+                <Image
+                  src={Logo.src}
+                  width="230px"
+                  height="68px"
+                  alt=""
+                  className=""
+                />
+              </div>
+            )}
               </div>
             </Link>
           </div>

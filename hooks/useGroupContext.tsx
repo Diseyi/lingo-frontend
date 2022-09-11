@@ -1,8 +1,9 @@
-import { ThemeContext } from "../../store/themeContext";
+
+import { UserContext } from "../store/userContext";
 import { useContext } from "react";
 
-export const useThemeContext = () => {
-  const context = useContext(ThemeContext);
+export const useGroupContext = () => {
+  const context = useContext(UserContext);
 
   if (!context) {
     throw Error("useAuthContext must be used inside an AuthContextProvider");

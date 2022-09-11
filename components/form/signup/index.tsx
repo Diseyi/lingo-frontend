@@ -1,6 +1,6 @@
 import React, {useState } from "react";
 import { useRouter } from "next/router"; 4
-import { useAuth } from "../../../common/hooks/useAuth";
+import { useAuth } from "../../../hooks/useAuth";
 import { Input, message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";

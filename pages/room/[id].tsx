@@ -7,8 +7,8 @@ import Layout from "../../layout";
 import ChatHeader from "../../components/nav/chatHeader";
 import Add from "../../components/add";
 import Empty from "../../components/empty";
-import { useGroup } from "../../common/hooks/useGroup";
-import { useGroupContext } from "../../common/hooks/useGroupContext";
+import { useGroup } from "../../hooks/useGroup";
+import { useGroupContext } from "../../hooks/useGroupContext";
 
 const RoomId = () => {
   const { getGroup, error, isLoading } = useGroup();

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { Input, message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
-import { useAuth } from "../../../common/hooks/useAuth";
+import { useAuth } from "../../../hooks/useAuth";
 
 const Login = () => {
   const [username, setUsername] = useState("");

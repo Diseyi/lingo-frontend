@@ -4,8 +4,8 @@ import RoomList from "../../components/roomList";
 import Empty from "../../components/empty";
 import EmptyList from "../../components/emptyList";
 import Layout from "../../layout";
-import { useGroup } from "../../common/hooks/useGroup";
-import { useGroupContext } from "../../common/hooks/useGroupContext";
+import { useGroup } from "../../hooks/useGroup";
+import { useGroupContext } from "../../hooks/useGroupContext";
 
 const Room = () => {
   const { getGroup, error, isLoading } = useGroup();

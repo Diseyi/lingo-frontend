@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { NextPage } from "next";
-import { useThemeContext } from "../common/hooks/useThemeContext";
+import { useTheme } from "next-themes";
 import Head from "next/head";
 import Link from "next/link";
 import Logo from "../assets/icon/logo.svg";
@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
 
-  const { state } = useThemeContext() as any;
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => checkLoggedIn());
 
@@ -35,7 +35,10 @@ const Home: NextPage = () => {
       <Head>
         <title>Lingo</title>
         <meta name="description" content="chat app" />
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <link
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+          rel="stylesheet"
+        ></link>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="">
@@ -62,22 +65,20 @@ const Home: NextPage = () => {
         </nav>
         <nav className="hidden  md:flex flex-row items-center justify-between w-[90%] m-auto py-4 ">
           <div className="flex flex-row items-center gap-9">
-            {state === "light" && (
+            {theme === "dark" ? (
               <div className="">
                 <Image
-                  src={Logo.src}
+                  src={darkmodeLogo.src}
                   width="230px"
                   height="68px"
                   alt=""
                   className=""
                 />
               </div>
-            )}
-
-            {state === "dark" && (
+            ) : (
               <div className="">
                 <Image
-                  src={darkmodeLogo.src}
+                  src={Logo.src}
                   width="230px"
                   height="68px"
                   alt=""
