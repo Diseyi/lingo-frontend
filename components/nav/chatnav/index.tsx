@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { DownOutlined } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Dropdown, Menu, message, Space } from "antd";
+import { Dropdown } from "antd";
 import Link from "next/link";
 import Image from "next/image";
 import avatar from "../../../assets/icon/avatar.png";
@@ -11,7 +9,6 @@ import More from "../../more"
 import RoomIcon from "../../menu/roomIcon"
 import ChatIcon from "../../menu/chatIcon";
 import MenuIcon from "../../menu/MenuIcon"
-import menu from "../../../assets/icon/menu.svg"
 
 const Chatnav = () => {
 
@@ -19,13 +16,9 @@ const Chatnav = () => {
 
   const router = useRouter();
 
-  const handleShowMore = () => {
-    setShowMore(!showMore)
-  }
-  
 
   return (
-    <div className="flex w-full bg-[#2F3646] w-[380px] items-center justify-center space-x-8 py-6 ">
+    <div className="flex bg-[#2F3646] w-[380px] items-center justify-center space-x-8 py-6 ">
       <div className="border w-[44px] h-[44px] flex justify-center items-center rounded-full ">
         <div className="border w-[38px] h-[38px] flex justify-center items-center  rounded-full ">
           <Image

@@ -5,7 +5,7 @@ type Props = {
   icon?: JSX.Element;
   search?: JSX.Element;
   notification?: JSX.Element;
-  content?: any
+  content?: any;
   children?: JSX.Element;
   onClick?: () => void;
 };
@@ -15,7 +15,7 @@ const Layout: React.FC<Props> = ({
   onClick,
   content,
   search,
-  icon
+  icon,
 }) => {
   return (
     <section className="h-screen overflow-hidden ">
@@ -23,7 +23,6 @@ const Layout: React.FC<Props> = ({
         <div className="w-[380px]  bg-white ">
           <div className="dark:bg-[#1f2e2b] ">
             <Chatnav />
-            {/* <div className=""> {notification} </div> */}
             <div className="dark:bg-[#1f2e2b] "> {search} </div>
           </div>
           <div className="" onClick={onClick}>

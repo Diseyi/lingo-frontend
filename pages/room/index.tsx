@@ -11,6 +11,7 @@ const Room = () => {
   const { getGroup, error, isLoading } = useGroup();
   const { user, dispatch } = useGroupContext() as any;
   const groups = user?.groups ? user.groups : [];
+  console.log(groups)
 
   useEffect(() => {
     getGroup();

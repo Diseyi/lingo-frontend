@@ -7,6 +7,7 @@ import Logo from "../assets/icon/logo.svg";
 import darkmodeLogo from "../assets/icon/darkmodeLogo.svg";
 import Image from "next/image";
 import Hamburger from "../assets/icon/hamburger.svg";
+import Hamburger2 from "../assets/icon/hamburger2.svg";
 import Sidebar from "../components/sidebar";
 
 const Home: NextPage = () => {
@@ -44,23 +45,51 @@ const Home: NextPage = () => {
       <header className="">
         <nav className="flex py-4 items-center justify-between w-[90%] m-auto md:hidden">
           <div className="">
-            <Image
-              src={Logo.src}
-              width="179px"
-              height="53px"
-              alt=""
-              className=""
-            />
+            {theme === "dark" ? (
+              <div className="">
+                <Image
+                  src={darkmodeLogo.src}
+                  width="230px"
+                  height="68px"
+                  alt=""
+                  className=""
+                />
+              </div>
+            ) : (
+              <div className="">
+                <Image
+                  src={Logo.src}
+                  width="230px"
+                  height="68px"
+                  alt=""
+                  className=""
+                />
+              </div>
+            )}
           </div>
 
           <div className="" onClick={showMenu}>
-            <Image
-              src={Hamburger.src}
-              width="24px"
-              height="24px"
-              alt=""
-              className=""
-            />
+            {theme === "dark" ? (
+              <div className="">
+                <Image
+                  src={Hamburger2.src}
+                  width="24px"
+                  height="24px"
+                  alt=""
+                  className=""
+                />
+              </div>
+            ) : (
+              <div className="">
+                <Image
+                  src={Hamburger.src}
+                  width="24px"
+                  height="24px"
+                  alt=""
+                  className=""
+                />
+              </div>
+            )}
           </div>
         </nav>
         <nav className="hidden  md:flex flex-row items-center justify-between w-[90%] m-auto py-4 ">
