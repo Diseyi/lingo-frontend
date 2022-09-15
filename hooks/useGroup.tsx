@@ -18,7 +18,7 @@ export const useGroup = () => {
 
     try {
       const response = await axios({
-        url: LINGO_IP + `/api/users/${user.id}`,
+        url: LINGO_IP + `/api/users/${user.username}`,
         method: "get",
         headers: {
           Authorization: `Bearer ${user.token}`,

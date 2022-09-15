@@ -77,7 +77,7 @@ padding: 0 11px;
 
 
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 10px;
 }
 
@@ -89,4 +89,4 @@ padding: 0 11px;
 ::-webkit-scrollbar-thumb {
   background: #cfd7ea;
   border-radius: 10px;
-}
+} */
