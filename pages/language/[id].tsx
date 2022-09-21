@@ -164,7 +164,7 @@ const Language = () => {
             htmlFor=""
             className="font-medium dark:text-[#DCE0E8] text-base text-[#171B23]"
           >
-            Please select your desired language room
+            Please select your desired room
           </label>
           <div className="py-2 flex flex-col justify-start text-base text-[#171B23]">
             {room.map((item) => (

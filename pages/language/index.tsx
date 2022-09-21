@@ -86,12 +86,6 @@ const Language = () => {
   return (
     <section className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen w-full overflow-y-auto  ">
       <main className="w-[90%] md:w-[500px] m-auto  ">
-      <button
-            onClick={() => router.back()}
-            className="font-semibold  flex text-[#171B23] dark:text-[#DCE0E8] my-6 text-base cursor-pointer "
-          >
-            &larr; Go back
-          </button>
         <div className=" flex justify-center  items-center my-8">
        
           <div className="">
@@ -165,7 +159,7 @@ const Language = () => {
             htmlFor=""
             className="font-medium dark:text-[#DCE0E8] text-base text-[#171B23]"
           >
-            Please select your desired language room
+            Please select your desired room
           </label>
           <div className="py-2 flex flex-col justify-start text-base text-[#171B23]">
             {room.map((item) => (

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-4;
 import { useAuthContext } from "../../../hooks/useAuthContext";
 import { message } from "antd";
 import axios from "axios";
@@ -59,7 +58,6 @@ const SignupForm = () => {
 
         router.push("/language")
       } catch (error: any) {
-        console.log(error)
         const errorResponse = error.response;
         setIsLoading(false);
         if (errorResponse.status === 400) {

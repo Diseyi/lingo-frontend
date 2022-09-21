@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { Input, message } from "antd";
+import { useAuthContext } from "../../../hooks/useAuthContext";
+import {  message } from "antd";
+import axios from "axios";
 import Link from "next/link";
 import Spinner from "../../spinner";
-import { useAuth } from "../../../hooks/useAuth";
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { auth, error, isLoading } = useAuth();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { dispatch } = useAuthContext() as any;
 
   const router = useRouter();
 
@@ -19,16 +23,42 @@ const Login = () => {
     if (checkPayload) {
       message.warn("Username or password shouldn't be empty");
     } else {
-      const payload = {
-        username,
-        password,
+      setIsLoading(true);
+      const headers = {
+        "Content-Type": "application/json",
       };
 
-      await auth("/api/users/login", "post", payload);
-      if (error !== null) {
-        console.log(error)
+      const payload = JSON.stringify({
+        username,
+        password,
+      });
+
+      const reqOptions = {
+        url: "https://backend-lingo.herokuapp.com/api/users/login",
+        method: "POST",
+        headers: headers,
+        data: payload,
+      };
+
+      try {
+        const response = await axios.request(reqOptions);
+        const data = response?.data;
+
+        localStorage.setItem("user", JSON.stringify(data));
+
+        dispatch({ type: "LOGIN", payload: data });
+        setIsLoading(false);
+
+        router.push("/chats")
+      } catch (error: any) {
+        const errorResponse = error.response;
+        setIsLoading(false);
+        if (errorResponse.status === 400) {
+          message.warn("Incorrect details");
+          return;
+        }
+        message.warn("Server error")
       }
-      // router.push("/chats")
     }
   };
 
