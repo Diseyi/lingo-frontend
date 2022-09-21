@@ -24,7 +24,7 @@ const Search = ({searchvalue}: any) => {
           id="simple-search"
           className="bg-[#E9EBEC] dark:bg-[#41494C] dark:text-[#DCE0E8] text-gray-900 text-sm rounded-lg w-full pl-10 p-2.5 "
           placeholder="Search"
-          value={searchvalue}
+          // value={searchvalue}
           required
         />
       </div>

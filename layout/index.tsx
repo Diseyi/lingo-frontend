@@ -33,17 +33,18 @@ const Layout: React.FC<Props> = ({
             {" "}
             {icon}{" "}
           </div>
-          <div className="dark:bg-[#1f2e2b] h-full"> {content} </div>
+          <div className="dark:bg-[#1f2e2b] h-full">
+            <div className=""> {content} </div>
+          </div>
         </div>
         <div className="w-full dark:bg-[#383838] ">{children}</div>
       </div>
+      {/* mobile */}
       <div className=" w-full h-screen md:hidden">
         <div className="">
           <Search />
         </div>
-        <div className="">
-          {mobileContent}
-        </div>
+        <div className="">{mobileContent}</div>
         <div className="">
           <Mobilenav />
         </div>

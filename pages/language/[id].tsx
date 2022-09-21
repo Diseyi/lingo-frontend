@@ -43,7 +43,6 @@ const Language = () => {
     };
     if (!validity) {
       await getLang(payload);
-      console.log(payload);
       router.push("/chats");
     }
   };

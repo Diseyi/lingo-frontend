@@ -36,10 +36,6 @@ const Home: NextPage = () => {
       <Head>
         <title>Lingo</title>
         <meta name="description" content="chat app" />
-        <link
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
-          rel="stylesheet"
-        ></link>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="">

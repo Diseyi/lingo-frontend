@@ -1,40 +1,83 @@
-import React, {useState } from "react";
-import { useRouter } from "next/router"; 4
-import { useAuth } from "../../../hooks/useAuth";
-import { Input, message } from "antd";
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+4;
+import { useAuthContext } from "../../../hooks/useAuthContext";
+import { message } from "antd";
+import axios from "axios";
 import Link from "next/link";
 import Spinner from "../../spinner";
 
 const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { auth, error, isLoading } = useAuth()
 
-  const router = useRouter()
+  const { dispatch } = useAuthContext() as any;
 
-  const sendRequest = async(e: any) => {
+  const router = useRouter();
+
+  const sendRequest = async (e: any) => {
     e.preventDefault();
 
     const samePassword = comparePassword();
-    const checkPayload = isValidPayload(username, password, samePassword)
+    const checkPayload = isValidPayload(username, password, samePassword);
+    const checkUsernameLength = usernameLength(username);
 
     if (!samePassword) {
       message.warn("Password doesn't match");
     } else if (checkPayload) {
-       message.warn("Username or password shouldn't be empty");
+      message.warn("Username or password shouldn't be empty");
+    } else if (checkUsernameLength) {
+      message.warn("Username length should be more that four letters");
     } else {
-      const payload = {
-        username,
-        password,
+      setIsLoading(true);
+      const headers = {
+        "Content-Type": "application/json",
       };
 
-      await auth("/api/users/signup", "post", payload);
-      router.push("/language")
+      const payload = JSON.stringify({
+        username,
+        password,
+      });
+
+      const reqOptions = {
+        url: "https://backend-lingo.herokuapp.com/api/users/signup",
+        method: "POST",
+        headers: headers,
+        data: payload,
+      };
+
+      try {
+        const response = await axios.request(reqOptions);
+        const data = response?.data;
+
+        localStorage.setItem("user", JSON.stringify(data));
+
+        dispatch({ type: "LOGIN", payload: data });
+        setIsLoading(false);
+
+        router.push("/language")
+      } catch (error: any) {
+        console.log(error)
+        const errorResponse = error.response;
+        setIsLoading(false);
+        if (errorResponse.status === 400) {
+          message.warn("User already registered");
+          return;
+        }
+        message.warn("Server error")
+      }
     }
   };
 
-  const getUsername = (e: any) => {
+  const usernameLength = (username: string) => {
+    if (username.length < 5) {
+      return true;
+    }
+  };
+
+  const getUsername = (e: { target: { value: string } }) => {
     setUsername(e.target.value);
   };
 
@@ -50,11 +93,15 @@ const SignupForm = () => {
     return password === confirmPassword;
   };
 
-  const isValidPayload = (username: string, password: string, validPassword: boolean) => {
+  const isValidPayload = (
+    username: string,
+    password: string,
+    validPassword: boolean
+  ) => {
     if (validPassword) {
-      return username === "" && password === ""
+      return username === "" && password === "";
     }
-  }
+  };
 
   return (
     <div className="w-[90%] md:w-[500px] m-auto   ">

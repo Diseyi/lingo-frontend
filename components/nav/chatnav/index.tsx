@@ -18,7 +18,7 @@ const Chatnav = () => {
 
 
   return (
-    <div className="flex bg-[#2F3646] w-[380px] items-center justify-center space-x-8 py-6 ">
+    <div className="flex bg-[#2F3646] w-[380px] items-end justify-center space-x-8 py-6 ">
       <div className="border w-[44px] h-[44px] flex justify-center items-center rounded-full ">
         <div className="border w-[38px] h-[38px] flex justify-center items-center  rounded-full ">
           <Image
@@ -55,8 +55,8 @@ const Chatnav = () => {
             <span
               className={
                 router.pathname === "/chats"
-                  ? "text-[#AAE8DF]"
-                  : "text-[#FFFFFF]"
+                  ? "text-[#AAE8DF] pt-1"
+                  : "text-[#FFFFFF] pt-1"
               }
             >
               Chats

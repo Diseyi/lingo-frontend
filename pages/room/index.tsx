@@ -4,19 +4,12 @@ import RoomList from "../../components/roomList";
 import Empty from "../../components/empty";
 import EmptyList from "../../components/emptyList";
 import Layout from "../../layout";
-import { useGroup } from "../../hooks/useGroup";
-import { useGroupContext } from "../../hooks/useGroupContext";
+import { useRoom } from "../../hooks/useRoom";
 
 const Room = () => {
-  const { getGroup, error, isLoading } = useGroup();
-  const { user, dispatch } = useGroupContext() as any;
-  const groups = user?.groups ? user.groups : [];
-  console.log(groups)
+  const  {data, error, isLoading } = useRoom();
+  console.log( data, error)
 
-  useEffect(() => {
-    getGroup();
-    return dispatch({ type: "GETUSER", payload: null});
-  }, []);
 
   return (
     <div className="">
@@ -24,17 +17,17 @@ const Room = () => {
       <Layout
         search={<Search />}
         content={
-           !isLoading && groups.length === 0 ? (
+           !isLoading && data === null ? (
             <EmptyList text="Your Rooms on Lingo would appear here" />
           ) : (
-            <RoomList data={groups} isloading={isLoading} />
+            <RoomList data={data} isloading={isLoading} />
           )
         }
         mobileContent={
-           !isLoading && groups.length === 0 ? (
+           !isLoading && data === null ? (
             <EmptyList text="Your Rooms on Lingo would appear here" />
           ) : (
-            <RoomList data={groups} isloading={isLoading} />
+            <RoomList data={data} isloading={isLoading} />
           )
         }
       >

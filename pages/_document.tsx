@@ -33,7 +33,10 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-         
+        <link
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+          rel="stylesheet"
+        ></link>
         </Head>
         <body className="dark:bg-[#1f2e2b]">
           <Main />

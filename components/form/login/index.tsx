@@ -25,7 +25,10 @@ const Login = () => {
       };
 
       await auth("/api/users/login", "post", payload);
-      router.push("/chats")
+      if (error !== null) {
+        console.log(error)
+      }
+      // router.push("/chats")
     }
   };
 

@@ -10,7 +10,7 @@ const index = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen ">
+    <div className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen overflow-y-auto  ">
       <header className="hidden md:block  ">
         <nav className="flex flex-row items-center justify-between w-[90%] m-auto py-4 ">
           <div className="flex flex-row items-center gap-9">

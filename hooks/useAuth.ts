@@ -5,11 +5,11 @@ import { useAuthContext } from "./useAuthContext";
 const LINGO_IP = process.env.LINGO_IP as string;
 
 export const useAuth = () => {
-  const [error, setError] = useState(null as any);
+  const [error, setError] = useState({} as any);
   const [isLoading, setIsLoading] = useState<any>(null);
   const { dispatch } = useAuthContext() as any;
 
-  const auth = async (url: string, method: Method, body: any) => {
+  const auth = async (url: string, method: Method, body: {username: string, password: string}) => {
     setIsLoading(true);
     setError(null);
 
@@ -28,10 +28,10 @@ export const useAuth = () => {
       dispatch({ type: "LOGIN", payload: data });
 
       setIsLoading(false);
-    } catch (error: any) {
+    } catch (err: any) {
       const Error = error.response.statusText;
       setIsLoading(false);
-      setError("Bad Request");
+      // setError(...error, err);
     }
   };
 
