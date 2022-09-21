@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { useAuthContext } from "../../../hooks/useAuthContext";
-import {  message } from "antd";
-import axios from "axios";
+import { message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
-
+import { useAuth } from "../../../hooks/useAuth";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const { dispatch } = useAuthContext() as any;
+  const { auth, isLoading } = useAuth();
 
   const router = useRouter();
 
@@ -23,50 +19,30 @@ const Login = () => {
     if (checkPayload) {
       message.warn("Username or password shouldn't be empty");
     } else {
-      setIsLoading(true);
-      const headers = {
-        "Content-Type": "application/json",
-      };
-
-      const payload = JSON.stringify({
+      const payload = {
         username,
         password,
-      });
-
-      const reqOptions = {
-        url: "https://backend-lingo.herokuapp.com/api/users/login",
-        method: "POST",
-        headers: headers,
-        data: payload,
       };
 
-      try {
-        const response = await axios.request(reqOptions);
-        const data = response?.data;
-
-        localStorage.setItem("user", JSON.stringify(data));
-
-        dispatch({ type: "LOGIN", payload: data });
-        setIsLoading(false);
-
-        router.push("/chats")
-      } catch (error: any) {
-        const errorResponse = error.response;
-        setIsLoading(false);
-        if (errorResponse.status === 400) {
+      const response = await auth("/api/users/login", "post", payload);
+      if (response.statusText === "Bad Request") {
+        if (response.status === 400) {
           message.warn("Incorrect details");
           return;
         }
-        message.warn("Server error")
+        message.warn("Server error");
+        return;
       }
+
+      router.push("/chats");
     }
   };
 
-  const getUsername = (e: any) => {
+  const getUsername = (e: { target: { value: string } }) => {
     setUsername(e.target.value);
   };
 
-  const getPassword = (e: any) => {
+  const getPassword = (e: { target: { value: string } }) => {
     setPassword(e.target.value);
   };
 

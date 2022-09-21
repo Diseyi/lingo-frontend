@@ -5,20 +5,18 @@ import { useAuthContext } from "./useAuthContext";
 const LINGO_IP = process.env.LINGO_IP as string;
 
 export const useAuth = () => {
-  const [error, setError] = useState({} as any);
-  const [isLoading, setIsLoading] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { dispatch } = useAuthContext() as any;
 
-  const auth = async (url: string, method: Method, body: {username: string, password: string}) => {
+  const auth = async (url: string, method: Method, body: { username: string, password: string }) => {
     setIsLoading(true);
-    setError(null);
 
     try {
       const response = await axios({
         url: LINGO_IP + url,
         method: method,
         headers: { "Content-Type": "application/json" },
-        data: body,
+        data: JSON.stringify(body),
       });
 
       const data = response?.data;
@@ -28,12 +26,13 @@ export const useAuth = () => {
       dispatch({ type: "LOGIN", payload: data });
 
       setIsLoading(false);
-    } catch (err: any) {
-      const Error = error.response.statusText;
+      return data
+    } catch (error: any) {
+      const errorResponse = error.response;
       setIsLoading(false);
-      // setError(...error, err);
+      return errorResponse
     }
   };
 
-  return { auth, isLoading, error };
+  return { auth, isLoading };
 };

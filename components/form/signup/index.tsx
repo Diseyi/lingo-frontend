@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import { useAuthContext } from "../../../hooks/useAuthContext";
+import { useAuth } from "../../../hooks/useAuth";
 import { message } from "antd";
-import axios from "axios";
 import Link from "next/link";
 import Spinner from "../../spinner";
 
 const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const { dispatch } = useAuthContext() as any;
+  const { auth, isLoading } = useAuth();
 
   const router = useRouter();
 
@@ -30,42 +28,22 @@ const SignupForm = () => {
     } else if (checkUsernameLength) {
       message.warn("Username length should be more that four letters");
     } else {
-      setIsLoading(true);
-      const headers = {
-        "Content-Type": "application/json",
-      };
-
-      const payload = JSON.stringify({
+      const payload = {
         username,
         password,
-      });
-
-      const reqOptions = {
-        url: "https://backend-lingo.herokuapp.com/api/users/signup",
-        method: "POST",
-        headers: headers,
-        data: payload,
       };
 
-      try {
-        const response = await axios.request(reqOptions);
-        const data = response?.data;
-
-        localStorage.setItem("user", JSON.stringify(data));
-
-        dispatch({ type: "LOGIN", payload: data });
-        setIsLoading(false);
-
-        router.push("/language")
-      } catch (error: any) {
-        const errorResponse = error.response;
-        setIsLoading(false);
-        if (errorResponse.status === 400) {
+      const response = await auth("/api/users/signup", "post", payload);
+      if (response.statusText === "Bad Request") {
+        if (response.status === 400) {
           message.warn("User already registered");
           return;
         }
-        message.warn("Server error")
+        message.warn("Server error");
+        return;
       }
+
+      router.push("/language");
     }
   };
 
@@ -79,11 +57,11 @@ const SignupForm = () => {
     setUsername(e.target.value);
   };
 
-  const getPassword = (e: any) => {
+  const getPassword = (e: { target: { value: string } }) => {
     setPassword(e.target.value);
   };
 
-  const getConfirmPassword = (e: any) => {
+  const getConfirmPassword = (e: { target: { value: string } }) => {
     setConfirmPassword(e.target.value);
   };
 
