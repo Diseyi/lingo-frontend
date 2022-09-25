@@ -5,14 +5,12 @@ import { useAuthContext } from "./useAuthContext";
 const LINGO_IP = process.env.LINGO_IP as string;
 
 export const useLanguage = () => {
-  const [error, setError] = useState(null as any);
-  const [isLoading, setIsLoading] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { user } = useAuthContext() as any;
 
-  const getLang = async (body: any) => {
+  const getLang = async (body: { lang: string, groups: Array<string>}) => {
     setIsLoading(true);
-    setError(null);
 
     try {
       const response = await axios({
@@ -24,11 +22,12 @@ export const useLanguage = () => {
         data: body,
       });
       setIsLoading(false);
+      return response
     } catch (error: any) {
       setIsLoading(false);
-      setError("Bad Request");
+      return error
     }
   };
 
-  return { getLang, isLoading, error };
+  return { getLang, isLoading };
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Search from "../../components/search";
 import RoomList from "../../components/roomList";
 import Empty from "../../components/empty";
@@ -8,8 +8,6 @@ import { useRoom } from "../../hooks/useRoom";
 
 const Room = () => {
   const  {data, error, isLoading } = useRoom();
-  console.log( data, error)
-
 
   return (
     <div className="">

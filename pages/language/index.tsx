@@ -14,7 +14,7 @@ const Language = () => {
   const { theme, setTheme } = useTheme();
 
   const [language, setLanguage] = useState({} as any);
-  const { getLang, error, isLoading } = useLanguage();
+  const { getLang, isLoading } = useLanguage();
 
   const [room, setRoom] = useState([
     { id: 0, checked: false, value: "English" },
@@ -43,6 +43,7 @@ const Language = () => {
     };
     if (!validity) {
       await getLang(payload);
+
       router.push("/chats");
     }
   };
@@ -87,9 +88,8 @@ const Language = () => {
     <section className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen w-full overflow-y-auto  ">
       <main className="w-[90%] md:w-[500px] m-auto  ">
         <div className=" flex justify-center  items-center my-8">
-       
           <div className="">
-          {theme === "dark" ? (
+            {theme === "dark" ? (
               <div className="">
                 <Image
                   src={Lingo.src}

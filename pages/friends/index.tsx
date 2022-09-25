@@ -13,9 +13,9 @@ const Friend = () => {
   const [value, setValue] = useState("");
   const [showFriend, setShowFriend] = useState(false);
 
- const  {data, error, isLoading } = useGetFriend();
+ const  {data, isLoading } = useGetFriend();
 
- const  {dataA, errorA, isLoadingA, getFriend } = useAddFriend();
+ const  {isLoadingA, getFriend } = useAddFriend();
 
  const addFriend = () => {
   const isFriend = data.includes(value)
@@ -24,7 +24,6 @@ const Friend = () => {
     return;
   }
   getFriend(value)
-  console.log(dataA, errorA)
  }
 
 

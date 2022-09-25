@@ -14,7 +14,7 @@ const Language = () => {
   const [language, setLanguage] = useState({} as any);
   const { theme, setTheme } = useTheme();
 
-  const { getLang, error, isLoading } = useLanguage();
+  const { getLang, isLoading } = useLanguage();
 
   const [room, setRoom] = useState([
     { id: 0, checked: false, value: "English" },
@@ -42,8 +42,9 @@ const Language = () => {
       groups: filterRoom,
     };
     if (!validity) {
-      await getLang(payload);
-      router.push("/chats");
+      const response = await getLang(payload);
+      console.log(response)
+      // router.push("/chats");
     }
   };
 

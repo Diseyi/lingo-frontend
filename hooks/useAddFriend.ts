@@ -19,7 +19,7 @@ export const useAddFriend = () => {
         try {
             const response = await axios({
                 url: LINGO_IP + `/api/users/${friend}`,
-                method: "get",
+                method: "patch",
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },
