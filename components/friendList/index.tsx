@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import avatar from "../../assets/icon/avatar.png";
 import Spinner from "../spinner";
+import { useRouter } from "next/router";
 
 type Props = {
   data?: any;
@@ -10,6 +11,8 @@ type Props = {
 };
 
 const FriendList = ({ data, isloading, isloadingA }: Props) => {
+
+  const router = useRouter()
 
   return (
     <ul className=" px-6 h-[600px] relative  overflow-y-scroll py-2 ">
@@ -30,7 +33,7 @@ const FriendList = ({ data, isloading, isloadingA }: Props) => {
         <div className="">
           {data.map((friend: any) => {
             return (
-              <div key={friend + 1} className="cursor-pointer">
+              <div key={friend + 1} className="cursor-pointer"  onClick={() => router.push(`/friends/${friend}`)} >
                 <div className="flex flex-row gap-4 py-2 border-b px-4 hover:bg-[#E9EBEC] dark:hover:bg-[#11473F] hover:rounded dark:text-[#DCE0E8] cursor-pointer border-b dark:border-[#3f524f] items-center">
                   <div className="">
                     <Image src={avatar.src} width="48px" height="48px" alt="" />

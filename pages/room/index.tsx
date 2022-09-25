@@ -7,7 +7,7 @@ import Layout from "../../layout";
 import { useRoom } from "../../hooks/useRoom";
 
 const Room = () => {
-  const  {data, error, isLoading } = useRoom();
+  const  {data, isLoading } = useRoom();
 
   return (
     <div className="">

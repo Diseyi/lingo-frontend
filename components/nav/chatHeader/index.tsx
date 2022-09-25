@@ -3,7 +3,7 @@ import Image from "next/image";
 import avatar from "../../../assets/icon/avatar.png";
 import menu from "../../../assets/icon/menu.svg";
 
-const ChatHeader = () => {
+const ChatHeader = ({roomName, members, online}: any) => {
   const [showMore, setShowMore] = useState(false);
 
   const handleShowMore = () => {
@@ -19,11 +19,11 @@ const ChatHeader = () => {
           </div>
           <div className="">
             <div className="font-semibold text-gray-600 text-base">
-              Spanish Room
+              {roomName}
             </div>
             <div className="text-xs font-medium text-gray-600">
-              <span className="">2,000 members, </span>
-              <span className="">150 online</span>
+              <span className=""> {members} </span>
+              <span className=""> {online} </span>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { message } from 'antd';
 import Search from "../../components/search";
 import FriendSearch from "../../components/friendSearch";

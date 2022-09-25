@@ -1,52 +1,95 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { message } from "antd";
 import Search from "../../components/search";
-import Notification from "../../components/notification";
-import RoomList from "../../components/roomList";
+import FriendSearch from "../../components/friendSearch";
 import EmptyList from "../../components/emptyList";
 import Layout from "../../layout";
+import FriendList from "../../components/friendList";
+import { useGetFriend } from "../../hooks/useGetFriend";
+import { useAddFriend } from "../../hooks/useAddFriend";
 import ChatHeader from "../../components/nav/chatHeader";
-import Add from "../../components/add";
+import { useRouter } from "next/router";
 
 const FriendId = () => {
-  const [filterChats, setFilterChats] = useState(true);
-  const [isSearch, setIsSearch] = useState(filterChats);
+  const [value, setValue] = useState<string>("");
+  const [showFriend, setShowFriend] = useState<boolean>(false);
+  const [friendParam, setFriendParam] = useState<string | string[] | undefined>("");
 
-  const data = [
-    "Spanish Room",
-    "French Room",
-    "English Room",
-    "Yoruba Room",
-    "Chinese Room",
-    "Latin Room",
-    "Spanish Room",
-    "French Room",
-    "English Room",
-    "Yoruba Room",
-    "Chinese Room",
-    "Latin Room",
-  ];
+  const { data, isLoading } = useGetFriend();
 
-  const showSearch = () => {
-    setIsSearch(!isSearch);
+  const { isLoadingA, getFriend } = useAddFriend();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const queryparam = router.query.id;
+    setFriendParam(queryparam);
+  });
+
+  const addFriend = () => {
+    const isFriend = data.includes(value);
+    if (isFriend) {
+      message.warn(`${value} is already on your friend list`);
+      return;
+    }
+    getFriend(value);
   };
 
   return (
     <div className="">
       <title>Room</title>
       <Layout
-        notification={<Notification />}
-        search={isSearch ? <Search /> : <></>}
-        icon={<Add />}
+        search={
+          <>
+            {showFriend ? (
+              <FriendSearch
+                onclick={addFriend}
+                onchange={(e: { target: { value: string } }) =>
+                  setValue(e.target.value)
+                }
+                searchvalue={value}
+              />
+            ) : (
+              <Search />
+            )}
+          </>
+        }
         content={
-          filterChats ? (
-            <RoomList data={data} />
+          !isLoading && data === null ? (
+            <EmptyList text="Your Friends on Lingo would appear here" />
           ) : (
-            <EmptyList text="Your Rooms on Lingo would appear here" />
+            <>
+              <FriendList
+                isloadingA={isLoadingA}
+                data={data}
+                isloading={isLoading}
+              />
+              <div
+                onClick={() => setShowFriend(!showFriend)}
+                className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[290px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
+              >
+                +
+              </div>
+            </>
           )
         }
-        onClick={showSearch}
+        mobileContent={
+          !isLoading && data === null ? (
+            <EmptyList text="Your Friends on Lingo would appear here" />
+          ) : (
+            <>
+              <FriendList data={data} isloading={isLoading} />
+              <div
+                onClick={() => setShowFriend(!showFriend)}
+                className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[220px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
+              >
+                +
+              </div>
+            </>
+          )
+        }
       >
-        <ChatHeader />
+        <ChatHeader roomName={`${friendParam} `} online="online" />
       </Layout>
     </div>
   );

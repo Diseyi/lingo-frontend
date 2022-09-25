@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Search from "../../components/search";
 import RoomList from "../../components/roomList";
 import EmptyList from "../../components/emptyList";
@@ -7,7 +8,14 @@ import ChatHeader from "../../components/nav/chatHeader";
 import { useRoom } from "../../hooks/useRoom";
 
 const RoomId = () => {
-  const { data, error, isLoading } = useRoom();
+  const { data, isLoading } = useRoom();
+  const [roomParam, setRoomParam] = useState<string | string[] | undefined>('')
+   const router = useRouter();
+
+  useEffect(() => {
+    const queryparam = router.query.id
+    setRoomParam(queryparam)
+  })
 
   return (
     <div className="">
@@ -29,7 +37,7 @@ const RoomId = () => {
           )
         }
       >
-        <ChatHeader />
+        <ChatHeader roomName={`${roomParam} Room`} members="2,000 members" online="150 online" />
       </Layout>
     </div>
   );
