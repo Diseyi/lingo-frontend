@@ -34,15 +34,15 @@ const SignupForm = () => {
       };
 
       const response = await auth("/api/users/signup", "post", payload);
-      if (response.statusText === "Bad Request") {
         if (response.status === 400) {
           message.warn("User already registered");
           return;
         }
-        message.warn("Server error");
-        return;
-      }
-
+        if (response.status === 404) {
+          message.warn("Invalid Address");
+          return;
+        }
+      console.log(response)
       router.push("/language");
     }
   };

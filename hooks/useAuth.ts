@@ -1,6 +1,7 @@
 import axios, { Method } from "axios";
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import socket from "../socket";
 
 const LINGO_IP = process.env.LINGO_IP as string;
 
@@ -20,6 +21,9 @@ export const useAuth = () => {
       });
 
       const data = response?.data;
+      const user = data.username
+      socket.auth = { user };
+      socket.connect();
 
       localStorage.setItem("user", JSON.stringify(data));
 

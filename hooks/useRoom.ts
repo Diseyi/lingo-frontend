@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useAuthContext } from "./useAuthContext";
 
 const LINGO_IP = process.env.LINGO_IP as string;
@@ -28,7 +28,7 @@ export const useRoom = () => {
                     const data = response?.data[0].groups
                     setIsLoading(false);
                     setData(data)
-
+                    
                 } catch (error: any) {
                     setIsLoading(false);
                     setError("Error!");

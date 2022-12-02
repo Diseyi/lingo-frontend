@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
 import { useAuth } from "../../../hooks/useAuth";
+import socket from "../../../socket";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,6 +12,16 @@ const Login = () => {
   const { auth, isLoading } = useAuth();
 
   const router = useRouter();
+
+  useEffect(() => {
+      socket.on("connect_error", (err) => {
+        if (err.message === "invalid username") {
+          console.log(err);
+        }
+      });
+    
+    return () => {socket.off("connect_error");}
+  });
 
   const sendRequest = async (e: any) => {
     e.preventDefault();
@@ -25,16 +36,21 @@ const Login = () => {
       };
 
       const response = await auth("/api/users/login", "post", payload);
-      if (response.statusText === "Bad Request") {
-        if (response.status === 400) {
-          message.warn("Incorrect details");
-          return;
-        }
-        message.warn("Server error");
+      if (response.status === 400) {
+        message.warn("Incorrect details");
+        return;
+      }
+      if (response.status === 404) {
+        message.warn("Invalid Address");
         return;
       }
 
-      router.push("/chats");
+      const you = response.username;
+      socket.auth = { you };
+      socket.connect();
+      // console.log(response)
+
+      // router.push("/chats");
     }
   };
 

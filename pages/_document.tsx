@@ -22,7 +22,7 @@ export default class MyDocument extends Document {
           {initialProps.styles}
           <style
             data-emotion-css={styles.ids.join(' ')}
-            dangerouslySetInnerHTML={{__html: styles.css}}
+            dangerouslySetInnerHTML={{ __html: styles.css }}
           />
         </>
       ),
@@ -31,12 +31,15 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en" >
         <Head>
-        <link
-          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
-          rel="stylesheet"
-        ></link>
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/assets/icon/icon.png"></link>
+          <meta name="theme-color" content="#f2f3f5" />
+          <link
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body className="dark:bg-[#1f2e2b]">
           <Main />

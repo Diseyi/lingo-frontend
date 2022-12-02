@@ -122,10 +122,10 @@ const Home: NextPage = () => {
               </Link>
             </div>
           ) : (
-            <div className=" flex-row gap-4 items-center hidden lg:flex ">
+            <div className=" flex-row gap-4 items-center hidden md:flex ">
               <Link href="/login">
                 <div className=" font-semibold hover:bg-gray-200 text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-gray-300 cursor-pointer">
-                  Login
+                  Log in
                 </div>
               </Link>
               <Link href="/signup">
@@ -139,9 +139,32 @@ const Home: NextPage = () => {
       </header>
       {isMenu && <Sidebar />}
       <main className="py-10">
-        <h1 className="text-center dark:text-[#DCE0E8] text-2xl">
-          Welcome to Lingo
-        </h1>
+        <div className=" m-auto w-[90%] md:w-[600px] text-center">
+          <h1 className=" dark:text-[#DCE0E8] text-2xl py-2 font-bold">
+            Welcome to Lingo
+          </h1>
+          <p className=" ">
+            Lingo is a chat app that bridges the communication gap of people of
+            different languages, it enables people of different languages
+            communicate with one another effectively. With Lingo, a french can
+            now communicate with a spanish in their own language with ease.{" "}
+          </p>
+
+          <h2 className="font-bold dark:text-[#DCE0E8] text-2xl py-2 mt-6 ">
+            How does Lingo Work
+          </h2>
+          <p className="">
+            If your primary language of communication is French and you have a
+            spanish friend whose primary language of commuication is spanish,
+            when you send them a message in french, they get to receive your
+            message in spanih.
+          </p>
+          <p className="">
+            Under the hood, Lingo intercepts your message and translates it
+            before sending it to the receiver. With Lingo chatting is now fun
+            and easy
+          </p>
+        </div>
       </main>
     </div>
   );
