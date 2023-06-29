@@ -16,6 +16,7 @@ from going back and forth to translate messages.
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
 # or
 yarn dev
