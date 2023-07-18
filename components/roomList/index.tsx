@@ -12,6 +12,7 @@ type Props = {
 const RoomsList = ({ data, isloading }: Props) => {
 
   const router = useRouter()
+  const queryString = router.query.name;
   
   return (
     <div className=" px-6 h-[600px]  overflow-y-scroll ">

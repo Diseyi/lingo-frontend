@@ -4,6 +4,7 @@ import { useAuth } from "../../../hooks/useAuth";
 import { message } from "antd";
 import Link from "next/link";
 import Spinner from "../../spinner";
+import socket from "../../../socket";
 
 const SignupForm = () => {
   const [username, setUsername] = useState("");
@@ -42,7 +43,10 @@ const SignupForm = () => {
           message.warn("Invalid Address");
           return;
         }
-      console.log(response)
+        const you = response.username;
+        socket.auth = { you };
+        console.log(socket)
+        socket.connect();
       router.push("/language");
     }
   };

@@ -13,15 +13,15 @@ const Login = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-      socket.on("connect_error", (err) => {
-        if (err.message === "invalid username") {
-          console.log(err);
-        }
-      });
+  // useEffect(() => {
+  //     socket.on("connect_error", (err) => {
+  //       if (err.message === "invalid username") {
+  //         console.log(err);
+  //       }
+  //     });
     
-    return () => {socket.off("connect_error");}
-  });
+  //   return () => {socket.off("connect_error");}
+  // });
 
   const sendRequest = async (e: any) => {
     e.preventDefault();
@@ -47,10 +47,10 @@ const Login = () => {
 
       const you = response.username;
       socket.auth = { you };
+      console.log(socket)
       socket.connect();
-      // console.log(response)
 
-      // router.push("/chats");
+      router.push("/chats");
     }
   };
 
