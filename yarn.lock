@@ -1686,6 +1686,13 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
+"@mightymeld/runtime@^0.1.19":
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/@mightymeld/runtime/-/runtime-0.1.19.tgz#e6d053bf76732e6a547a9c143ca4df44831bb4e7"
+  integrity sha512-5QoMyvju729l2TxoYIhDrVvw7krzD5Ui8A/1pCyD3X4T20gRianvhZ/XOMG2L1Mbq7z1D5ibIIfp8BISvS1LEA==
+  dependencies:
+    chokidar "^3.5.3"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
