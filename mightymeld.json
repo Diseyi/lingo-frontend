@@ -1,7 +1,7 @@
 {
     "run": "yarn dev",
 
-    "include": ["components", "pages", "assets", "layout"],
+    "include": ["components", "pages", "layout"],
     "prefab_dir": "prefabs",
     "web_server_url": "http://localhost:3000",
     "main_branch": "main"
