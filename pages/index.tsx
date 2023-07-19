@@ -140,7 +140,9 @@ const Home: NextPage = () => {
       {isMenu && <Sidebar />}
       <main className="py-10">
         <div className=" m-auto w-[90%] md:w-[600px] text-center">
-          <h1 className=" dark:text-[#DCE0E8] text-2xl py-2 font-bold">
+          <h1 className=" dark:text-[#DCE0E8] text-2xl py-2 font-bold" style={{
+  color: "red"
+}}>
             Welcome to Lingo
           </h1>
           <p className=" ">
