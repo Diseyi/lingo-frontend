@@ -68,7 +68,9 @@ const Login = () => {
 
   return (
     <div className=" w-[90%] md:w-[500px] m-auto   ">
-      <h2 className="font-medium dark:text-[#DCE0E8] text-xl lg:text-4xl text-center my-4 mb-14 py-2 ">
+      <h2 className="font-medium dark:text-[#DCE0E8] text-xl lg:text-4xl text-center my-4 mb-14 py-2 " style={{
+  color: "red"
+}}>
         Login into your account
       </h2>
       <form action="" className="mt-6  p-2 ">
