@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 
 const index = () => {
 
-  const { theme, setTheme } = useTheme();
+  const { theme} = useTheme();
 
   return (
     <div className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen overflow-y-auto ">
@@ -46,9 +46,9 @@ const index = () => {
               Dont have an account?
             </div>
             <Link href="/signup">
-              <div className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
+              <button className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
                 Signup
-              </div>
+              </button>
             </Link>
           </div>
         </nav>

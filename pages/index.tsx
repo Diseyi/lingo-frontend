@@ -130,14 +130,14 @@ const Home: NextPage = () => {
           ) : (
             <div className=" flex-row gap-4 items-center hidden md:flex ">
               <Link href="/login">
-                <div className=" font-semibold hover:bg-gray-200 text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-gray-300 cursor-pointer">
+                <button className=" font-semibold hover:bg-gray-200 text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-gray-300 cursor-pointer">
                   Log in
-                </div>
+                </button>
               </Link>
               <Link href="/signup">
-                <div className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
+                <button className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
                   Sign up
-                </div>
+                </button>
               </Link>
             </div>
           )}
