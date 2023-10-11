@@ -7,8 +7,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 
 const index = () => {
-
-  const { theme} = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen overflow-y-auto ">

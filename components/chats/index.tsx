@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Image from "next/image";
 import avatar from "../../assets/icon/avatar.png";
 
@@ -85,6 +85,6 @@ const Chats = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Chats
+export default Chats;

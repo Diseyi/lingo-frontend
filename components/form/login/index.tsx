@@ -19,7 +19,7 @@ const Login = () => {
   //         console.log(err);
   //       }
   //     });
-    
+
   //   return () => {socket.off("connect_error");}
   // });
 
@@ -47,7 +47,7 @@ const Login = () => {
 
       const you = response.username;
       socket.auth = { you };
-      console.log(socket)
+      console.log(socket);
       socket.connect();
 
       router.push("/chats");

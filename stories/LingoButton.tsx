@@ -1,5 +1,5 @@
-import React from 'react';
-import './button.css';
+import React from "react";
+import "./button.css";
 
 interface ButtonProps {
   /**
@@ -13,7 +13,7 @@ interface ButtonProps {
   /**
    * How large should the button be?
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   /**
    * Button contents
    */
@@ -27,19 +27,18 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const LingoButton  = ({
+export const LingoButton = ({
   primary = false,
-  size = 'medium',
+  size = "medium",
   backgroundColor,
   label,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const mode = primary
+    ? "storybook-button--primary"
+    : "storybook-button--secondary";
   return (
-    <button
-      type="button"
-      {...props}
-    >
+    <button type="button" {...props}>
       {label}
     </button>
   );

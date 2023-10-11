@@ -53,7 +53,7 @@ const Language = () => {
       room.map((todo) => {
         if (todo.id === id) return { ...todo, checked: !todo.checked };
         return todo;
-      })
+      }),
     );
   };
 

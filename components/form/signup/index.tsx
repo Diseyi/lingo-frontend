@@ -35,18 +35,18 @@ const SignupForm = () => {
       };
 
       const response = await auth("/api/users/signup", "post", payload);
-        if (response.status === 400) {
-          message.warn("User already registered");
-          return;
-        }
-        if (response.status === 404) {
-          message.warn("Invalid Address");
-          return;
-        }
-        const you = response.username;
-        socket.auth = { you };
-        console.log(socket)
-        socket.connect();
+      if (response.status === 400) {
+        message.warn("User already registered");
+        return;
+      }
+      if (response.status === 404) {
+        message.warn("Invalid Address");
+        return;
+      }
+      const you = response.username;
+      socket.auth = { you };
+      console.log(socket);
+      socket.connect();
       router.push("/language");
     }
   };
@@ -76,7 +76,7 @@ const SignupForm = () => {
   const isValidPayload = (
     username: string,
     password: string,
-    validPassword: boolean
+    validPassword: boolean,
   ) => {
     if (validPassword) {
       return username === "" && password === "";

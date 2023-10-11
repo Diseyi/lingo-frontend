@@ -14,14 +14,14 @@ const { extractCritical } = createEmotionServer(cache);
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
-    const styles = extractCritical(initialProps.html)
+    const styles = extractCritical(initialProps.html);
     return {
       ...initialProps,
       styles: (
         <>
           {initialProps.styles}
           <style
-            data-emotion-css={styles.ids.join(' ')}
+            data-emotion-css={styles.ids.join(" ")}
             dangerouslySetInnerHTML={{ __html: styles.css }}
           />
         </>
@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en" >
+      <Html lang="en">
         <Head>
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/assets/icon/icon.png"></link>

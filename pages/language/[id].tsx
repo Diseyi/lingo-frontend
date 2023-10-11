@@ -43,7 +43,7 @@ const Language = () => {
     };
     if (!validity) {
       const response = await getLang(payload);
-      console.log(response)
+      console.log(response);
       // router.push("/chats");
     }
   };
@@ -53,7 +53,7 @@ const Language = () => {
       room.map((todo) => {
         if (todo.id === id) return { ...todo, checked: !todo.checked };
         return todo;
-      })
+      }),
     );
   };
 
@@ -87,12 +87,12 @@ const Language = () => {
   return (
     <section className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen w-full overflow-y-auto  ">
       <main className="w-[90%] md:w-[500px] m-auto  ">
-      <button
-            onClick={() => router.back()}
-            className="font-semibold  flex text-[#171B23] dark:text-[#DCE0E8] my-6 text-base cursor-pointer "
-          >
-            &larr; Go back
-          </button>
+        <button
+          onClick={() => router.back()}
+          className="font-semibold  flex text-[#171B23] dark:text-[#DCE0E8] my-6 text-base cursor-pointer "
+        >
+          &larr; Go back
+        </button>
         <div className=" flex flex-col justify-center  items-center my-8">
           <div className="">
             {theme === "dark" ? (

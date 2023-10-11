@@ -30,13 +30,11 @@ const Sidebar = () => {
           />
         </div>
         {isLoggedIn ? (
-
-            <Link href="/chats">
-              <div className="text-base bg-[#52B1A4] rounded text-[#DCE0E8] w-full px-8 py-3 cursor-pointer">
-                Go to chat
-              </div>
-            </Link>
-  
+          <Link href="/chats">
+            <div className="text-base bg-[#52B1A4] rounded text-[#DCE0E8] w-full px-8 py-3 cursor-pointer">
+              Go to chat
+            </div>
+          </Link>
         ) : (
           <div className="">
             <Link href="/login">

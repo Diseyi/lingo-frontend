@@ -5,17 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import avatar from "../../../assets/icon/avatar.png";
 import Friends from "../../menu/friendIcon";
-import More from "../../more"
-import RoomIcon from "../../menu/roomIcon"
+import More from "../../more";
+import RoomIcon from "../../menu/roomIcon";
 import ChatIcon from "../../menu/chatIcon";
-import MenuIcon from "../../menu/MenuIcon"
+import MenuIcon from "../../menu/MenuIcon";
 
 const Chatnav = () => {
-
-  const [showMore, setShowMore] = useState(false)
+  const [showMore, setShowMore] = useState(false);
 
   const router = useRouter();
-
 
   return (
     <div className="flex bg-[#2F3646] w-[380px] items-end justify-center space-x-8 py-6 ">
@@ -85,7 +83,6 @@ const Chatnav = () => {
             <span className="pt-1">More</span>
           </div>
         </Dropdown>
-
       </div>
       {showMore && <More />}
     </div>

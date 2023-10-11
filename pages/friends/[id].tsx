@@ -12,7 +12,7 @@ const FriendId = () => {
   const [inputMessage, setInputMessage] = useState<string>("");
   const [showFriend, setShowFriend] = useState<boolean>(false);
   const [friendParam, setFriendParam] = useState<string | string[] | undefined>(
-    ""
+    "",
   );
 
   const containerRef = useRef<HTMLInputElement>(null);
@@ -20,7 +20,7 @@ const FriendId = () => {
   const { user } = useAuthContext() as any;
 
   const router = useRouter();
-  const sendTo = router.query.id
+  const sendTo = router.query.id;
 
   useEffect(() => {
     const queryparam = router.query.id;
@@ -54,50 +54,57 @@ const FriendId = () => {
     setInputMessage(e.target.value);
   };
 
-
   return (
     <div className="">
       <title>Room</title>
       <Layout
         content={
-          (
-            <>
-              {showFriend ? (
-                <FriendSearch onclick={() => console.log('hello')} onchange={(e: { target: { value: string; } }) => setValue(e.target.value)} searchvalue={value} />
-              ) : (
-                <FriendList />
-              )}
-              <div
-                onClick={() => setShowFriend(!showFriend)}
-                className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[290px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
-              >
-                +
-              </div>
-            </>
-          )
+          <>
+            {showFriend ? (
+              <FriendSearch
+                onclick={() => console.log("hello")}
+                onchange={(e: { target: { value: string } }) =>
+                  setValue(e.target.value)
+                }
+                searchvalue={value}
+              />
+            ) : (
+              <FriendList />
+            )}
+            <div
+              onClick={() => setShowFriend(!showFriend)}
+              className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[290px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
+            >
+              +
+            </div>
+          </>
         }
         mobileContent={
-          (
-            <>
-              {showFriend ? (
-                <FriendSearch onclick={() => console.log('hello')} onchange={(e: { target: { value: string; } }) => setValue(e.target.value)} searchvalue={value} />
-              ) : (
-                <FriendList />
-              )}
-              <div
-                onClick={() => setShowFriend(!showFriend)}
-                className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[290px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
-              >
-                +
-              </div>
-            </>
-          )
+          <>
+            {showFriend ? (
+              <FriendSearch
+                onclick={() => console.log("hello")}
+                onchange={(e: { target: { value: string } }) =>
+                  setValue(e.target.value)
+                }
+                searchvalue={value}
+              />
+            ) : (
+              <FriendList />
+            )}
+            <div
+              onClick={() => setShowFriend(!showFriend)}
+              className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[290px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
+            >
+              +
+            </div>
+          </>
         }
       >
         <>
           <ChatHeader roomName={`${friendParam} `} online="online" />
           <div className="h-full w-full space-x-4">
-            <div ref={containerRef} className="px-4" ></div>
+            <div ref={containerRef} className="px-4"></div>
 
             <div className="py-2 flex w-8/12 fixed bottom-0 ml-6 ">
               <input

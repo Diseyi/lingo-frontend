@@ -10,7 +10,7 @@ import socket from "../../socket";
 
 const RoomId = () => {
   const { data, isLoading } = useRoom();
-  const [roomParam, setRoomParam] = useState<string | string[] | undefined>('')
+  const [roomParam, setRoomParam] = useState<string | string[] | undefined>("");
   const [inputMessage, setInputMessage] = useState<string>("");
   const router = useRouter();
 
@@ -29,7 +29,7 @@ const RoomId = () => {
   // })
 
   const handleSubmit = () => {
-    socket.emit('room-message', { message: inputMessage, room: roomParam })
+    socket.emit("room-message", { message: inputMessage, room: roomParam });
 
     const div = document.createElement("div");
     const button = document.createElement("div");
@@ -70,9 +70,13 @@ const RoomId = () => {
         }
       >
         <>
-          <ChatHeader roomName={`${roomParam} Room`} members="2,000 members" online="150 online" />
+          <ChatHeader
+            roomName={`${roomParam} Room`}
+            members="2,000 members"
+            online="150 online"
+          />
           <div className="h-full w-full space-x-4">
-          <div ref={containerRef} className="px-4" ></div>
+            <div ref={containerRef} className="px-4"></div>
 
             <div className="py-2 flex w-8/12 fixed bottom-0 ml-6 ">
               <input
@@ -91,7 +95,6 @@ const RoomId = () => {
             </div>
           </div>
         </>
-
       </Layout>
     </div>
   );

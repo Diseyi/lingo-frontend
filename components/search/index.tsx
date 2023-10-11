@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const Search = ({searchvalue, handleSearch}: any) => {
+const Search = ({ searchvalue, handleSearch }: any) => {
   return (
     <div className="pt-4 px-6">
       <div className="relative  w-full">
@@ -30,6 +30,6 @@ const Search = ({searchvalue, handleSearch}: any) => {
       </div>
     </div>
   );
-}
+};
 
-export default Search
+export default Search;

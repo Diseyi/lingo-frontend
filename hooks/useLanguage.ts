@@ -9,7 +9,7 @@ export const useLanguage = () => {
 
   const { user } = useAuthContext() as any;
 
-  const getLang = async (body: { lang: string, groups: Array<string>}) => {
+  const getLang = async (body: { lang: string; groups: Array<string> }) => {
     setIsLoading(true);
 
     try {
@@ -22,10 +22,10 @@ export const useLanguage = () => {
         data: body,
       });
       setIsLoading(false);
-      return response
+      return response;
     } catch (error: any) {
       setIsLoading(false);
-      return error
+      return error;
     }
   };
 

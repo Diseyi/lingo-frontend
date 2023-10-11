@@ -5,7 +5,6 @@ const DarkModeToggle: React.FC = () => {
   const [mounted, setMounted] = React.useState(false);
   const { theme, setTheme } = useTheme();
 
-
   React.useEffect(() => setMounted(true), []);
 
   const handleTheme = () => {

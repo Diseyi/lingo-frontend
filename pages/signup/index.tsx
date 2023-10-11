@@ -16,27 +16,27 @@ const index = () => {
           <div className="flex flex-row items-center gap-9">
             <Link href="/">
               <div className="">
-              {theme === "dark" ? (
-              <div className="">
-                <Image
-                  src={darkmodeLogo.src}
-                  width="230px"
-                  height="68px"
-                  alt=""
-                  className=""
-                />
-              </div>
-            ) : (
-              <div className="">
-                <Image
-                  src={Logo.src}
-                  width="230px"
-                  height="68px"
-                  alt=""
-                  className=""
-                />
-              </div>
-            )}
+                {theme === "dark" ? (
+                  <div className="">
+                    <Image
+                      src={darkmodeLogo.src}
+                      width="230px"
+                      height="68px"
+                      alt=""
+                      className=""
+                    />
+                  </div>
+                ) : (
+                  <div className="">
+                    <Image
+                      src={Logo.src}
+                      width="230px"
+                      height="68px"
+                      alt=""
+                      className=""
+                    />
+                  </div>
+                )}
               </div>
             </Link>
           </div>

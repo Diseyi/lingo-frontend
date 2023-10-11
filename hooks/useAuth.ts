@@ -9,7 +9,11 @@ export const useAuth = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { dispatch } = useAuthContext() as any;
 
-  const auth = async (url: string, method: Method, body: { username: string, password: string }) => {
+  const auth = async (
+    url: string,
+    method: Method,
+    body: { username: string; password: string },
+  ) => {
     setIsLoading(true);
 
     try {
@@ -21,7 +25,7 @@ export const useAuth = () => {
       });
 
       const data = response?.data;
-      const user = data.username
+      const user = data.username;
       socket.auth = { user };
       socket.connect();
 
@@ -30,11 +34,11 @@ export const useAuth = () => {
       dispatch({ type: "LOGIN", payload: data });
 
       setIsLoading(false);
-      return data
+      return data;
     } catch (error: any) {
       const errorResponse = error.response;
       setIsLoading(false);
-      return errorResponse
+      return errorResponse;
     }
   };
 

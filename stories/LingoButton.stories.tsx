@@ -1,17 +1,19 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { LingoButton } from './LingoButton';
+import { LingoButton } from "./LingoButton";
 
 export default {
-  title: 'Button',
-  component: LingoButton ,
+  title: "Button",
+  component: LingoButton,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    backgroundColor: { control: "color" },
   },
-} as ComponentMeta<typeof LingoButton >;
+} as ComponentMeta<typeof LingoButton>;
 
-const Template: ComponentStory<typeof LingoButton > = (args) => <LingoButton  {...args} />;
+const Template: ComponentStory<typeof LingoButton> = (args) => (
+  <LingoButton {...args} />
+);
 
 export const Primary = Template.bind({});
 

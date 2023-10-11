@@ -1,6 +1,6 @@
-import React from 'react'
-import Image from 'next/image';
-import notification from '../../assets/icon/notification.svg'
+import React from "react";
+import Image from "next/image";
+import notification from "../../assets/icon/notification.svg";
 
 const Notification = () => {
   return (
@@ -11,6 +11,6 @@ const Notification = () => {
       <div className="text-[#003333] ">Get notified of new messages</div>
     </div>
   );
-}
+};
 
-export default Notification
+export default Notification;

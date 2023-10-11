@@ -3,7 +3,7 @@ import Image from "next/image";
 import avatar from "../../../assets/icon/avatar.png";
 import menu from "../../../assets/icon/menu.svg";
 
-const ChatHeader = ({roomName, members, online}: any) => {
+const ChatHeader = ({ roomName, members, online }: any) => {
   const [showMore, setShowMore] = useState(false);
 
   const handleShowMore = () => {

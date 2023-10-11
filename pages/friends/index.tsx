@@ -9,38 +9,44 @@ const Friend = () => {
   const [showFriend, setShowFriend] = useState(false);
 
   const getUser = () => {
-    setShowFriend(!showFriend)
-  }
+    setShowFriend(!showFriend);
+  };
 
   return (
     <div className="">
       <title>Room</title>
       <Layout
         content={
-            <>
-              {showFriend ? (
-                <FriendSearch onclick={() => console.log('hello')} onchange={(e: { target: { value: string; } }) => setValue(e.target.value)} searchvalue={value} />
-              ) : (
-                <FriendList />
-              )}
-              <div
-                onClick={getUser}
-                className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[290px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
-              >
-                +
-              </div>
-            </>
+          <>
+            {showFriend ? (
+              <FriendSearch
+                onclick={() => console.log("hello")}
+                onchange={(e: { target: { value: string } }) =>
+                  setValue(e.target.value)
+                }
+                searchvalue={value}
+              />
+            ) : (
+              <FriendList />
+            )}
+            <div
+              onClick={getUser}
+              className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[290px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
+            >
+              +
+            </div>
+          </>
         }
         mobileContent={
-            <>
-              <FriendList />
-              <div
-                onClick={getUser}
-                className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[220px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
-              >
-                +
-              </div>
-            </>
+          <>
+            <FriendList />
+            <div
+              onClick={getUser}
+              className="w-12 h-12 rounded-full border fixed bottom-32 cursor-pointer shadow-xl left-[220px] text-3xl font-light flex justify-center items-center text-black bg-[#AAE8DF] "
+            >
+              +
+            </div>
+          </>
         }
       >
         <Empty />

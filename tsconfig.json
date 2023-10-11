@@ -15,6 +15,12 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/menu", "src/prefabs/MUI.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/menu",
+    "src/prefabs/MUI.jsx"
+  ],
   "exclude": ["node_modules"]
 }

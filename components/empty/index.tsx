@@ -1,7 +1,6 @@
-import React from 'react'
-import Image from 'next/image'
-import image from "../../assets/icon/image.svg"
-
+import React from "react";
+import Image from "next/image";
+import image from "../../assets/icon/image.svg";
 
 const Empty = () => {
   return (
@@ -9,6 +8,6 @@ const Empty = () => {
       <Image src={image.src} width="287" height="287" alt="" />
     </div>
   );
-}
+};
 
-export default Empty
+export default Empty;

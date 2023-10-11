@@ -1,10 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC } from "react";
 
 type Props = {
-  className?: any
-}
+  className?: any;
+};
 
-const Friends: React.FC<Props> = ({className}) => {
+const Friends: React.FC<Props> = ({ className }) => {
   return (
     <div>
       <svg
@@ -43,4 +43,4 @@ const Friends: React.FC<Props> = ({className}) => {
   );
 };
 
-export default Friends
+export default Friends;

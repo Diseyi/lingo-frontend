@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Add = () => {
   return (
@@ -6,6 +6,6 @@ const Add = () => {
       +
     </div>
   );
-}
+};
 
-export default Add
+export default Add;

@@ -9,15 +9,15 @@ import { useRoom } from "../../hooks/useRoom";
 const Room = () => {
   const { data, isLoading } = useRoom();
   const [roomData, setRoomData] = useState(data);
-  const [searchData, setSearchData] = useState('');
+  const [searchData, setSearchData] = useState("");
   const holdDdata = useRef(data);
 
   useEffect(() => {
     if (data !== null) {
       holdDdata.current = data;
-      setRoomData(holdDdata.current)
+      setRoomData(holdDdata.current);
     }
-  },);
+  });
 
   const handleSearch = (e: any) => {
     const value = e.target.value;
@@ -27,7 +27,7 @@ const Room = () => {
       }
     });
     console.log(filterData);
-   holdDdata.current = filterData
+    holdDdata.current = filterData;
   };
 
   return (

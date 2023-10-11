@@ -1,23 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import axios from "axios";
 import Spinner from "../spinner";
 import { useGetUsers } from "../../hooks/useGetUsers";
 import { useAddFriend } from "../../hooks/useAddFriend";
 
 const FriendSearch = ({ searchvalue, onclick, onchange }: any) => {
-
   const { Userdata, UserisLoading, UserError, getUsers } = useGetUsers();
   const { isLoadingA, getFriend } = useAddFriend();
 
   useEffect(() => {
-    getUsers()
-  }, [])
+    getUsers();
+  }, []);
 
   const addFriend = (e: any) => {
-    const value = e.target.id
-    getFriend(value)
-    console.log(value)
-  }
+    const value = e.target.id;
+    getFriend(value);
+    console.log(value);
+  };
 
   return (
     <div className="pt-4 px-6">
@@ -32,7 +31,10 @@ const FriendSearch = ({ searchvalue, onclick, onchange }: any) => {
           onChange={onchange}
           required
         />
-        <button onClick={onclick} className="flex bg-[#E9EBEC] dark:bg-[#41494C] border rounded-lg p-2.5 inset-y-0 left-0 items-center pl-3">
+        <button
+          onClick={onclick}
+          className="flex bg-[#E9EBEC] dark:bg-[#41494C] border rounded-lg p-2.5 inset-y-0 left-0 items-center pl-3"
+        >
           <svg
             aria-hidden="true"
             className="w-5 h-5 text-gray-500"
@@ -48,25 +50,33 @@ const FriendSearch = ({ searchvalue, onclick, onchange }: any) => {
           </svg>
         </button>
       </div>
-      {
-        UserisLoading ? <div className="flex justifu-center items-center">
+      {UserisLoading ? (
+        <div className="flex justifu-center items-center">
           <Spinner />
-        </div> : <div className="flex flex-col my-6 ">
-          {
-            Userdata?.map((item: any) => {
-              return (
-                <div key={item._id} className="flex justify-between border my-1 px-2 py-3 ">
-                  <input type="button" value={item.username} className="" />
-                  <button onClick={addFriend} id={item.username} className="bg-gray-400 p-1 rounded text-xs" >add friend</button>
-                </div>
-
-              )
-            })
-          }
         </div>
-      }
+      ) : (
+        <div className="flex flex-col my-6 ">
+          {Userdata?.map((item: any) => {
+            return (
+              <div
+                key={item._id}
+                className="flex justify-between border my-1 px-2 py-3 "
+              >
+                <input type="button" value={item.username} className="" />
+                <button
+                  onClick={addFriend}
+                  id={item.username}
+                  className="bg-gray-400 p-1 rounded text-xs"
+                >
+                  add friend
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
-}
+};
 
-export default FriendSearch
+export default FriendSearch;

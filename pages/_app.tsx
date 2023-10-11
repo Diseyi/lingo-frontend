@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
@@ -7,7 +7,6 @@ import Theme from "../store/themeContext";
 import UserProvider from "../store/userContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
-
   // useEffect(()=> {
   //   if('serviceWorker' in navigator) {
   //       navigator.serviceWorker.register('/serviceworker.js')
