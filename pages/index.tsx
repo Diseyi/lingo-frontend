@@ -16,14 +16,20 @@ const Home: NextPage = () => {
 
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => checkLoggedIn());
+  // useEffect(() => checkLoggedIn());
 
   const checkLoggedIn = () => {
-    const userInSession = localStorage.getItem("user") || "";
-    const parsed = userInSession ? JSON.parse(userInSession) : "";
-
-    if (parsed) {
-      setIsLoggedIn(true);
+    const userInSession = localStorage.getItem("user");
+    if (userInSession) {
+      try {
+        const parsed = JSON.parse(userInSession);
+        if (parsed) {
+          setIsLoggedIn(true);
+        }
+      } catch (error) {
+        // Handle the error if JSON parsing fails
+        console.error("Error parsing userInSession:", error);
+      }
     }
   };
 

@@ -1781,10 +1781,10 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@mightymeld/runtime@^0.1.19":
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/@mightymeld/runtime/-/runtime-0.1.19.tgz#e6d053bf76732e6a547a9c143ca4df44831bb4e7"
-  integrity sha512-5QoMyvju729l2TxoYIhDrVvw7krzD5Ui8A/1pCyD3X4T20gRianvhZ/XOMG2L1Mbq7z1D5ibIIfp8BISvS1LEA==
+"@mightymeld/runtime@latest":
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/@mightymeld/runtime/-/runtime-0.1.29.tgz#f030b5790ad5e219a9f73f77fdbb4f5d85cc2f0a"
+  integrity sha512-HP6QgNCyvRAprL3i1ZyNdjnquLNzC/0pJajk86EQzjrwRZgo2cLePDtkYZhKjew6GBjqaj3lw64bh0I0xIW5Yw==
   dependencies:
     chokidar "^3.5.3"
 

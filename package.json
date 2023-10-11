@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
-    "@mightymeld/runtime": "^0.1.19",
+    "@mightymeld/runtime": "latest",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",

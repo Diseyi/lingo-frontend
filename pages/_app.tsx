@@ -8,17 +8,17 @@ import UserProvider from "../store/userContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  useEffect(()=> {
-    if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/serviceworker.js')
-        .then(registration => {
-          console.log('service worker is working at ', registration)
-        })
-        .catch(error => {
-          console.log('service worker is not running ', error);
-        })
-    }
-  }, [])
+  // useEffect(()=> {
+  //   if('serviceWorker' in navigator) {
+  //       navigator.serviceWorker.register('/serviceworker.js')
+  //       .then(registration => {
+  //         console.log('service worker is working at ', registration)
+  //       })
+  //       .catch(error => {
+  //         console.log('service worker is not running ', error);
+  //       })
+  //   }
+  // }, [])
   return (
     <AuthProvider>
       <UserProvider>

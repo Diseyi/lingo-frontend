@@ -5,11 +5,12 @@ import Logo from "../../assets/icon/logo.svg";
 import darkmodeLogo from "../../assets/icon/darkmodeLogo.svg";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import Button from "../../components/button";
 
 const index = () => {
 
   const { theme, setTheme } = useTheme();
-  
+
   return (
     <div className="bg-[#f2f3f5] dark:bg-[#1f2e2b] h-screen overflow-y-auto ">
       <header className="hidden  md:block">
@@ -17,27 +18,27 @@ const index = () => {
           <div className="flex flex-row items-center gap-9">
             <Link href="/">
               <div className="">
-              {theme === "dark" ? (
-              <div className="">
-                <Image
-                  src={darkmodeLogo.src}
-                  width="230px"
-                  height="68px"
-                  alt=""
-                  className=""
-                />
-              </div>
-            ) : (
-              <div className="">
-                <Image
-                  src={Logo.src}
-                  width="230px"
-                  height="68px"
-                  alt=""
-                  className=""
-                />
-              </div>
-            )}
+                {theme === "dark" ? (
+                  <div className="">
+                    <Image
+                      src={darkmodeLogo.src}
+                      width="230px"
+                      height="68px"
+                      alt=""
+                      className=""
+                    />
+                  </div>
+                ) : (
+                  <div className="">
+                    <Image
+                      src={Logo.src}
+                      width="230px"
+                      height="68px"
+                      alt=""
+                      className=""
+                    />
+                  </div>
+                )}
               </div>
             </Link>
           </div>
@@ -46,8 +47,8 @@ const index = () => {
               Dont have an account?
             </div>
             <Link href="/signup">
-              <div className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
-                Sign up
+              <div>
+                <Button />
               </div>
             </Link>
           </div>

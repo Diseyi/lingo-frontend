@@ -16,21 +16,19 @@ const RoomId = () => {
 
   const containerRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    const queryparam = router.query.id
-    setRoomParam(queryparam)
+  // useEffect(() => {
+  //   const queryparam = router.query.id
+  //   setRoomParam(queryparam)
 
-    socket.emit('join-room', queryparam)
+  //   socket.emit('join-room', queryparam)
 
-    socket.on('room-broadcast', (data) => {
-      console.log(data)
-      // setNewMessage(data.message)
-    })
-  })
+  //   socket.on('room-broadcast', (data) => {
+  //     console.log(data)
+  //     // setNewMessage(data.message)
+  //   })
+  // })
 
   const handleSubmit = () => {
-    // console.log(socket);
-
     socket.emit('room-message', { message: inputMessage, room: roomParam })
 
     const div = document.createElement("div");
