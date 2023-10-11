@@ -2,5 +2,6 @@
     "run": "yarn dev",
     "include": ["components", "pages", "layout", ".prettierrc.json", "prefabs"],
     "prefab_dir": "src/prefabs",
-    "web_server_url": "http://localhost:3000"
+    "web_server_url": "http://localhost:3000",
+    "run_prettier": true
   }
