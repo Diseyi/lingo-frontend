@@ -5,7 +5,6 @@ import Logo from "../../assets/icon/logo.svg";
 import darkmodeLogo from "../../assets/icon/darkmodeLogo.svg";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import Button from "../../components/button";
 
 const index = () => {
 
@@ -47,8 +46,8 @@ const index = () => {
               Dont have an account?
             </div>
             <Link href="/signup">
-              <div>
-                <Button />
+              <div className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
+                Signup
               </div>
             </Link>
           </div>
