@@ -45,9 +45,9 @@ const index = () => {
               Already have an account?
             </div>
             <Link href="/login">
-              <div className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
+              <button className="text-white font-semibold hover:bg-[#AAE8DF] hover:text-gray-600 px-8 py-2 rounded text-base boxshadow2 bg-[#52B1A4] cursor-pointer">
                 Login
-              </div>
+              </button>
             </Link>
           </div>
         </nav>
