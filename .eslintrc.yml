@@ -11,6 +11,8 @@ parserOptions:
     jsx: true
   ecmaVersion: latest
   sourceType: module
+rules:
+  react/react-in-jsx-scope: off
 plugins:
   - react
   - "@typescript-eslint"
